@@ -1,0 +1,321 @@
+/* --- 1. Reset y Variables --- */
+:root {
+    --color-cian: #0dcaf0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- 2. Navbar y Marca --- */
+.navbar-brand { font-weight: bold; letter-spacing: 1px; }
+
+.brand-icon-container {
+    background: rgba(13, 202, 240, 0.1);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(13, 202, 240, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover .brand-icon-container {
+    transform: rotate(15deg) scale(1.1);
+    background-color: rgba(13, 202, 240, 0.2);
+}
+
+/* --- 3. Efecto Glassmorphism (Tarjetas de Software y Servicios) --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 20px !important;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-cian) !important;
+    box-shadow: 0 15px 35px rgba(13, 202, 240, 0.2);
+}
+
+.card-header-glass {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 15px;
+    font-weight: bold;
+}
+
+/* --- 4. Resplandor Dinámico (Glow Point) --- */
+/* Este es el que hace que el JS funcione */
+.glow-point {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(13, 202, 240, 0.2) 0%, rgba(13, 202, 240, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* Asegura que el texto esté sobre el brillo */
+.glass-card .card-body, .glass-card .card-header-glass {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 5. Sección Hero --- */
+.hero { 
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero .container { position: relative; z-index: 2; }
+
+/* --- 6. Formulario de Contacto (Estilo Limpio) --- */
+#contacto { background-color: #f8f9fa !important; }
+
+.form-control-pro {
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    transition: all 0.3s;
+}
+
+.form-control-pro:focus {
+    border-color: var(--color-cian);
+    box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.1);
+    outline: none;
+}
+
+/* --- 7. WhatsApp Flotante --- */
+.btn-whatsapp { 
+    position: fixed; bottom: 20px; right: 20px; 
+    background: #25d366; color: white; 
+    border-radius: 50%; width: 60px; height: 60px; 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 30px; z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.btn-whatsapp:hover { transform: scale(1.1); color: white; }
+
+/* --- 8. Stack Tecnológico --- */
+.tech-card i { transition: all 0.3s ease; }
+.tech-card:hover i {
+    color: var(--color-cian) !important;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px var(--color-cian));
+}
+
+/* --- Animación del Cohete --- */
+
+/* 1. Selecciona el icono dentro de la clase 'navbar-brand' */
+.navbar-brand .bi-rocket-takeoff {
+    display: inline-block; /* Necesario para las transformaciones */
+    transition: transform 0.4s ease-out; /* Define una transición suave */
+}
+
+/* 2. Aplica la animación al pasar el ratón (hover) sobre la marca */
+.navbar-brand:hover .bi-rocket-takeoff {
+    transform: rotate(15deg) translateY(-8px); /* Gira un poco y se eleva */
+    color: #0dcaf0; /* Asegura el color cian cian (text-info) durante el hover */
+}
+
+/* Animación de despegue para el logo */
+.navbar-brand:hover .fa-rocket, 
+.navbar-brand:hover .bi-rocket-takeoff {
+    transform: translateY(-5px) rotate(15deg); /* Se eleva y se inclina */
+    transition: transform 0.3s ease-in-out;    /* Movimiento suave */
+    display: inline-block;                      /* Necesario para que transforme */
+}
+
+/* Estado normal para que regrese suavemente */
+.navbar-brand .fa-rocket, 
+.navbar-brand .bi-rocket-takeoff {
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+/* --- Estilos para el Botón 'Ver Servicios' --- */
+
+/* 1. Estilo base del botón (usando la clase btn-info que ya tienes) */
+.btn-info {
+    transition: all 0.3s ease-in-out; /* Transición suave para todos los efectos */
+}
+
+/* 2. Efecto al pasar el cursor (Hover): Brillo Cian Dinámico */
+.btn-info:hover {
+    background-color: #0dcaf0; /* Forzamos el color cian para que no se apague */
+    border-color: #0dcaf0;
+    
+    /* El efecto brillante: Box-shadow cian nítido y difuminado */
+    box-shadow: 0 0 8px rgba(13, 202, 240, 0.6), /* Brillo nítido cercano */
+               0 0 15px rgba(13, 202, 240, 0.4); /* Brillo difuminado exterior */
+    
+    transform: translateY(-3px); /* Pequeño salto hacia arriba para dar feedback visual */
+}
+
+/* --- Efecto de Brillo para Tarjetas de Proyectos (Hover Glow) --- */
+
+/* 1. Estilo base para las tarjetas (Hover Glass) */
+.glass-card {
+    transition: box-shadow 0.4s ease-out, transform 0.3s ease-in-out; /* Transición suave para el brillo y el movimiento */
+    display: flex; /* Asegura que la tarjeta use flexbox si es necesario */
+    flex-direction: column;
+}
+
+/* 2. Efecto al pasar el cursor (Hover): Brillo Cian Dinámico */
+.glass-card:hover {
+    /* El efecto brillante (Neón Glow): */
+    /* 1. Box-shadow interno cian muy nítido y cercano */
+    /* 2. Box-shadow externo cian nítido y difuminado */
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.7), /* Brillo nítido cercano */
+               0 0 20px rgba(13, 202, 240, 0.5); /* Brillo difuminado exterior */
+    
+    transform: translateY(-5px); /* Pequeño salto hacia arriba para dar feedback visual y pro */
+}
+
+/* 3. Asegurar que el título y los elementos dentro no se muevan de forma brusca */
+.glass-card:hover .text-info {
+    color: #0dcaf0; /* Forzamos el color cian para que no se apague */
+    /* Pequeño glow al título también (opcional) */
+    text-shadow: 0 0 5px rgba(13, 202, 240, 0.6);
+}
+
+/* --- Efecto Flotante y Brillo Completo para Tarjetas --- */
+
+/* 1. Estado normal: Definimos la suavidad de las transiciones */
+.glass-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-out; /* Suavidad para el movimiento y el brillo */
+    will-change: transform, box-shadow; /* Optimización para el navegador */
+}
+
+/* 2. Estado Hover: Efecto Flotante y Neón */
+.glass-card:hover {
+    /* EL EFECTO FLOTANTE: Un salto suave hacia arriba (-5px) */
+    transform: translateY(-5px);
+    
+    /* EL EFECTO BRILLANTE (Neón Glow): */
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.7), /* Brillo nítido cercano */
+               0 0 20px rgba(13, 202, 240, 0.5); /* Brillo difuminado exterior */
+}
+
+/* --- Efecto Flotante y Brillo Completo para TODAS las Tarjetas --- */
+
+/* 1. Estado normal: Definimos la suavidad de las transiciones */
+/* He añadido .service-card y .glass-card para cubrir ambas secciones */
+.service-card, .glass-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-out; /* Suavidad para el movimiento y el brillo */
+    will-change: transform, box-shadow; /* Optimización para el navegador */
+}
+
+/* 2. Estado Hover: Efecto Flotante y Neón */
+.service-card:hover, .glass-card:hover {
+    /* EL EFECTO FLOTANTE: Un salto suave hacia arriba (-5px) */
+    transform: translateY(-5px);
+    
+    /* EL EFECTO BRILLANTE (Neón Glow): */
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.7), /* Brillo nítido cercano */
+               0 0 20px rgba(13, 202, 240, 0.5); /* Brillo difuminado exterior */
+}
+
+/* --- Animación Maestra para Tarjetas --- */
+
+/* 1. Estado base de las tarjetas de servicios y proyectos */
+.glass-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
+    cursor: pointer;
+}
+
+/* 2. Efecto flotante y brillo al pasar el cursor */
+.glass-card:hover {
+    /* El salto hacia arriba que faltaba */
+    transform: translateY(-10px) !important;
+    
+    /* El brillo neón cian nítido */
+    box-shadow: 0 0 20px rgba(13, 202, 240, 0.6), 
+                0 0 40px rgba(13, 202, 240, 0.2) !important;
+}
+
+/* Estilo para el botón de envío del formulario */
+.btn-enviar-custom {
+    border-radius: 50px !important; /* Fuerza el redondeado total */
+    transition: all 0.3s ease-in-out !important;
+    background-color: #0dcaf0;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-enviar-custom:hover {
+    transform: translateY(-3px); /* Efecto flotante */
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.6), 
+                0 0 30px rgba(13, 202, 240, 0.3); /* Brillo cian */
+    background-color: #0bb5d8;
+}
+
+/* --- CONFIGURACIÓN NAVBAR --- */
+.navbar-custom-boost {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(33, 37, 41, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover en los links del menú */
+.link-hover-celeste {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.link-hover-celeste:hover {
+    color: #0dcaf0 !important; /* El celeste exacto que usas */
+    transform: translateY(-1px);
+}
+
+/* Mejora al botón de WhatsApp */
+.btn-whatsapp-nav {
+    transition: all 0.3s ease !important;
+    border-width: 2px;
+}
+
+.btn-whatsapp-nav:hover {
+    background-color: #0dcaf0 !important;
+    color: #212529 !important;
+    box-shadow: 0 4px 15px rgba(13, 202, 240, 0.3);
+}
+
+/* Estilo para que el menú móvil también se vea bien */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(33, 37, 41, 0.95);
+        margin-top: 10px;
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid rgba(13, 202, 240, 0.2);
+    }
+}

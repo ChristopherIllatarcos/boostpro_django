@@ -1,0 +1,41 @@
+{% load static %}
+
+<h2 class="text-center mb-5 fw-bold text-white">Servicios de Soporte <span class="text-info">&</span> Especialización</h2>
+
+<div class="row g-4 mt-2">
+    {% for servicio in servicios %}
+    <div class="col-md-4">
+        <div class="card glass-card border-0 h-100 shadow-lg text-center overflow-hidden">
+            
+            {% if servicio.imagen %}
+                <div class="w-100">
+                    <img src="{{ servicio.imagen.url }}" alt="{{ servicio.titulo }}" 
+                         class="img-fluid w-100" 
+                         style="height: 200px; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                </div>
+            {% endif %}
+
+            <div class="card-body p-4 {% if servicio.imagen %}pt-3{% endif %}">
+                {% if not servicio.imagen %}
+                    <div class="text-info mb-3">
+                        <i class="{{ servicio.icono }} fs-1"></i>
+                    </div>
+                {% endif %}
+
+                <h5 class="text-white fw-bold">{{ servicio.titulo }}</h5>
+                <p class="small text-white-50 mb-3">{{ servicio.descripcion }}</p>
+                
+                <div class="d-inline-block bg-info text-dark fw-bold py-1 px-3 rounded-2 shadow-sm">
+                    {% if servicio.precio > 0 %}
+                        ${{ servicio.precio }}
+                    {% else %}
+                        Cotizar
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center text-white-50">No hay servicios disponibles por el momento.</p>
+    {% endfor %}
+</div>

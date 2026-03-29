@@ -1,0 +1,127 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="bg-white min-vh-100">
+    <div class="container py-5 mt-5">
+        
+        <div class="d-flex justify-content-end mb-4 pt-4">
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-bold">
+                <i class="fas fa-arrow-left me-2"></i>Volver al Inicio
+            </a>
+        </div>
+
+        <div class="row g-5 align-items-start">
+            
+            <div class="col-lg-7">
+               <div class="position-relative shadow-lg rounded-4 overflow-hidden bg-black shadow-2-strong">
+    <div class="ratio ratio-16x9">
+        <video controls poster="{% static 'web/img/avacif_poster.jpg' %}">
+            <source src="/media/proyectos/video/0329.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+    
+    <span class="position-absolute top-0 start-0 bg-warning text-dark fw-bold m-3 px-3 py-1 rounded-pill small shadow-sm" style="z-index: 10;">
+        <i class="fas fa-tools me-1"></i>En Desarrollo (Beta)
+    </span>
+</div>
+                
+                <div class="d-flex justify-content-center mt-4">
+                    <div class="bg-light rounded-pill" style="width: 150px; height: 6px; opacity: 0.5;"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-info bg-opacity-10 p-3 rounded-3 me-3">
+                        <i class="fas fa-graduation-cap fa-2x text-info"></i>
+                    </div>
+                    <h1 class="display-5 fw-bold text-dark m-0">
+                     Gestión <span class="text-info">Académica</span></h1>
+                </div>
+                
+                <p class="lead text-secondary mb-5">
+                    Software de Gestión Académica integral. La solución moderna para centralizar la administración de **Instituciones Educativas**.
+                </p>
+
+                <div class="features-list">
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="text-info me-3 mt-1">
+                            <i class="fas fa-check-circle fs-5"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-dark mb-1">Control de Calificaciones:</h6>
+                            <p class="text-muted small m-0">Gestión eficiente de notas por asignatura, promedio automático y generación de actas.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="text-info me-3 mt-1">
+                            <i class="fas fa-user-clock fs-5"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-dark mb-1">Registro de Asistencia:</h6>
+                            <p class="text-muted small m-0">Toma de asistencia rápida por curso con reportes detallados para inspectoria.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="text-info me-3 mt-1">
+                            <i class="fas fa-comments fs-5"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-dark mb-1">Comunicación Institucional:</h6>
+                            <p class="text-muted small m-0">Módulo centralizado para envío de avisos y circulares a apoderados y docentes.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="text-info me-3 mt-1">
+                            <i class="fas fa-shield-alt fs-5"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-dark mb-1">Seguridad de Datos:</h6>
+                            <p class="text-muted small m-0">Base de datos protegida con control de accesos por rol (Admin, Docente, Alumno).</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-5">
+                    <button class="btn btn-light w-100 rounded-pill fw-bold py-3 border text-muted shadow-sm" disabled>
+                        <i class="fas fa-hourglass-half me-2"></i>Próximamente Disponible (Beta Privada)
+                    </button>
+                    <p class="text-center text-muted small mt-3 italic">
+                        <i class="fas fa-info-circle me-1"></i> Proyecto académico en etapa de desarrollo final.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Aseguramos que el texto sea legible en fondo blanco */
+    .bg-white { background-color: #ffffff !important; }
+    .text-dark { color: #212529 !important; }
+    .text-secondary { color: #6c757d !important; }
+    
+    /* Efecto sutil para los iconos */
+    .bg-info.bg-opacity-10 {
+        background-color: rgba(13, 202, 240, 0.1) !important;
+    }
+
+    /* Animación suave al cargar */
+    .container {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+{% endblock %}
