@@ -1,0 +1,4 @@
+*.mp4
+*.7z
+venv/
+db.sqlite3
