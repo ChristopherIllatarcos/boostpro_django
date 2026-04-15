@@ -1,0 +1,34 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="text-center p-5 border border-info rounded shadow-lg bg-dark" style="max-width: 600px;">
+        <h1 class="display-1 fw-bold text-info">404</h1>
+        <h2 class="text-white mb-4">SISTEMA: RUTA NO ENCONTRADA</h2>
+        
+        <div class="text-start bg-black p-3 rounded mb-4 shadow-sm" style="font-family: 'Courier New', Courier, monospace; border-left: 4px solid #0dcaf0;">
+            <p class="text-success m-0">user@boostpro:~$ <span class="text-white">get_page --url="current_path"</span></p>
+            <p class="text-danger m-0">[ERROR]: 404_PAGE_NOT_FOUND</p>
+            <p class="text-warning m-0">[INFO]: El recurso solicitado no existe en el servidor BoostPro.</p>
+            <p class="text-success m-0">user@boostpro:~$ <span class="text-white">cd /home/inicio</span><span class="placeholder-glow"><span class="placeholder col-1 bg-white"></span></span></p>
+        </div>
+
+        <a href="/" class="btn btn-outline-info btn-lg px-4">
+            <i class="bi bi-house-door"></i> Volver al Inicio
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Efecto de parpadeo del cursor de terminal */
+    .placeholder {
+        animation: blink 1s step-end infinite;
+        width: 10px;
+        min-height: 1.2em;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+</style>
+{% endblock %}

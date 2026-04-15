@@ -1,0 +1,82 @@
+/* --- Sección How It Works (Plan de Acción) --- */
+
+.how-it-works {
+    /* Imagen de fondo tecnológica */
+    background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.95)), 
+                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop');    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Esto crea un efecto Parallax muy elegante al bajar */
+    position: relative;
+    padding: 80px 0;
+}
+
+/* Tarjetas con estilo Glassmorphism */
+.step-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #0dcaf0; /* El celeste del glow */
+    box-shadow: 0 10px 30px rgba(13, 202, 240, 0.2);
+}
+
+/* Contenedor del Icono y Número */
+.step-icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.step-number {
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    background: #0dcaf0;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.5);
+}
+
+/* Efecto de luz detrás de los iconos al hacer hover */
+.step-card:hover .step-icon-wrapper i {
+    text-shadow: 0 0 20px #0dcaf0;
+    filter: brightness(1.2);
+}
+
+.how-it-works h2 span {
+    text-shadow: 0 0 10px rgba(13, 202, 240, 0.3);
+}
+
+/* Botón de "Más Información" con estilo propio */
+.step-card .btn-outline-info {
+    border-width: 2px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.step-card .btn-outline-info:hover {
+    background-color: #0dcaf0;
+    color: #fff !important;
+    box-shadow: 0 0 20px rgba(13, 202, 240, 0.6);
+    transform: scale(1.05);
+}
+
+/* Asegura que el contenido se alinee bien */
+.step-card {
+    min-height: 400px; /* Ajusta según necesites */
+}

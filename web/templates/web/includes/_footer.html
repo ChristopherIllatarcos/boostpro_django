@@ -35,6 +35,29 @@
     </div>
 </footer>
 
+{% load static %}
+<div class="modal fade" id="promoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white border-info" style="border-radius: 15px; border-width: 2px;">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title text-info fw-bold">🚀 ¿Necesitas ayuda técnica?</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <img src="{% static 'web/img/soporte.png' %}" alt="Soporte Técnico BoostPro" class="img-fluid rounded mb-3" style="max-height: 220px; filter: drop-shadow(0 0 8px rgba(13, 202, 240, 0.4));">
+                
+                <h4 class="fw-bold">¡No te rompas la cabeza!</h4>
+                <p class="opacity-75 px-3">En <strong>BoostPro</strong> resolvemos tus dudas al instante.</p>
+                
+                <a href="https://wa.me/56926231939?text=Hola%20BoostPro,%20necesito%20ayuda%20técnica" target="_blank" class="btn btn-info fw-bold px-4 py-2 mt-2 shadow-sm">
+                    <i class="fab fa-whatsapp me-2"></i> Haz clic aquí y hablemos
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 <style>
     /* Pequeño toque de interactividad para los iconos */
     .transition-icon:hover {

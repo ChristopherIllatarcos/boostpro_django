@@ -1,0 +1,108 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="service-detail-header py-5 text-white" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1500&auto=format&fit=crop'); background-size: cover; background-position: center;">
+    <div class="container py-5 text-center">
+        <div class="badge bg-success text-white mb-3 rounded-pill px-3 py-2 fw-bold">PASO 03</div>
+        <h1 class="display-3 fw-bold">Optimización <span class="text-info">Total</span></h1>
+        <p class="lead opacity-75">Donde el software alcanza su máximo potencial.</p>
+    </div>
+</section>
+
+<section class="service-body py-5 bg-dark text-white">
+    <div class="container py-4">
+        <div class="row g-5 flex-row-reverse align-items-center">
+            
+            <div class="col-lg-6">
+                <h2 class="h3 fw-bold mb-4 text-info"><i class="bi bi-speedometer2 me-2"></i>Rendimiento Sin Límites</h2>
+                <p class="lh-lg text-white-50">
+                    La etapa final garantiza que todo el desarrollo e intervención previa funcione con precisión quirúrgica. Entregamos sistemas optimizados para <strong>entornos multiplataforma</strong> (Windows y Linux) con flujos de trabajo automatizados que eliminan procesos innecesarios.
+                </p>
+                
+                <div class="features-list mt-4 mb-4">
+                    <div class="d-flex mb-3">
+                        <i class="bi bi-lightning-charge text-info fs-4 me-3" style="filter: drop-shadow(0 0 5px #0dcaf0);"></i>
+                        <div>
+                            <h4 class="h5 fw-bold text-white">Máxima Velocidad</h4>
+                            <p class="text-white-50 small">Reducción de latencia en aplicaciones Django y tiempos de respuesta del sistema operativo.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="bi bi-infinity text-info fs-4 me-3" style="filter: drop-shadow(0 0 5px #0dcaf0);"></i>
+                        <div>
+                            <h4 class="h5 fw-bold text-white">Soporte Continuo</h4>
+                            <p class="text-white-50 small">Planes de mantenimiento lógico para que tu infraestructura nunca se detenga.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card bg-dark bg-opacity-50 border-info p-4 shadow-lg glass-card" style="backdrop-filter: blur(15px); border-radius: 20px; border: 1px solid rgba(13, 202, 240, 0.4) !important;">
+                    <h3 class="h4 fw-bold mb-3 text-white">Garantía <span class="text-info">BoostPro</span></h3>
+                    <p class="small text-white-50">Sistemas entregados con estándares de calidad profesional y alto rendimiento.</p>
+                    
+                    <hr class="border-info opacity-25">
+                    
+                    <ul class="list-unstyled mb-4 small text-white">
+                        <li class="mb-2"><i class="bi bi-check2-all text-info me-2"></i> Estabilidad comprobada</li>
+                        <li class="mb-2"><i class="bi bi-check2-all text-info me-2"></i> Código limpio y eficiente</li>
+                        <li class="mb-2"><i class="bi bi-check2-all text-info me-2"></i> Documentación técnica incluida</li>
+                    </ul>
+
+                    <div class="d-flex gap-2">
+                        <a href="https://wa.me/56926231939" target="_blank" class="btn btn-info flex-grow-1 fw-bold rounded-pill py-3 text-white shadow btn-whatsapp-glow d-flex align-items-center justify-content-center" style="font-size: 0.85rem;">
+                            <i class="bi bi-whatsapp me-2"></i> WhatsApp
+                        </a>
+                        <button type="button" class="btn btn-outline-info flex-grow-1 fw-bold rounded-pill py-3 d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#emailModal" style="font-size: 0.85rem;">
+                            <i class="bi bi-envelope-fill me-2"></i> Correo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="emailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark border-info text-white" style="backdrop-filter: blur(20px); border-radius: 20px; border: 1px solid rgba(13, 202, 240, 0.4) !important;">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title fw-bold"><i class="bi bi-envelope-at text-info me-2"></i>Contacto BoostPro</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <p class="text-white-50 mb-4">Copia nuestro correo para enviarnos tus requerimientos técnicos.</p>
+                <div class="input-group mb-3 px-3">
+                    <input type="text" id="userEmail" class="form-control bg-dark text-info border-info fw-bold text-center" value="contacto.boostpro@gmail.com" readonly>
+                    <button class="btn btn-info fw-bold" type="button" onclick="copyToClipboard()" id="copyBtn">
+                        <i class="bi bi-clipboard"></i> Copiar
+                    </button>
+                </div>
+                <div id="copyMessage" class="text-success small d-none">
+                    <i class="bi bi-check-circle"></i> ¡Copiado con éxito!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard() {
+    var emailInput = document.getElementById("userEmail");
+    navigator.clipboard.writeText(emailInput.value).then(function() {
+        var btn = document.getElementById("copyBtn");
+        var msg = document.getElementById("copyMessage");
+        btn.innerHTML = '<i class="bi bi-clipboard-check"></i> ¡Listo!';
+        btn.classList.replace('btn-info', 'btn-success');
+        msg.classList.remove('d-none');
+        setTimeout(function() {
+            btn.innerHTML = '<i class="bi bi-clipboard"></i> Copiar';
+            btn.classList.replace('btn-success', 'btn-info');
+            msg.classList.add('d-none');
+        }, 3000);
+    });
+}
+</script>
+{% endblock %}

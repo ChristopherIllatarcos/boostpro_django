@@ -1,0 +1,52 @@
+{% extends 'web/base.html' %}
+
+{% load static %} {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'web/css/faq.css' %}?v=1.2" />
+{% endblock %}
+
+{% block content %}
+
+<section class="faq-page position-relative overflow-hidden py-5 text-white" style="min-height: 85vh; padding-top: 100px !important;">
+    <video autoplay muted loop playsinline class="position-absolute w-100 h-100" style="object-fit: cover; z-index: 1; top: 0; left: 0;">
+       <!--- <source src="{% static 'web/videos/video2.mp4' %}" type="video/mp4"> -->
+        Tu navegador no soporta videos.
+    </video>
+
+    <div class="position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.75); z-index: 2; top: 0; left: 0;"></div>
+
+    <div class="container position-relative" style="z-index: 3;">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-info">Preguntas Frecuentes</h1>
+            <p class="lead opacity-75">Todo lo que necesitas saber sobre nuestros servicios y procesos.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-flush" id="accordionFAQ">
+                    {% for item in faqs %}
+                        <div class="accordion-item bg-dark bg-opacity-25 border-secondary mb-3 shadow-sm" style="backdrop-filter: blur(5px);">
+                            <h2 class="accordion-header" id="flush-heading{{ item.id }}">
+                                <button class="accordion-button collapsed bg-transparent text-info fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ item.id }}">
+                                    <i class="far fa-question-circle me-2"></i> {{ item.pregunta }}
+                                </button>
+                            </h2>
+                            <div id="flush-collapse{{ item.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body text-light opacity-75 lh-lg">
+                                    {{ item.respuesta }}
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="text-center">Estamos trabajando en las respuestas. ¡Vuelve pronto!</p>
+                    {% endfor %}
+                </div>
+
+                <div class="text-center mt-5">
+                    <p>¿No encontraste lo que buscabas?</p>
+                    <a href="{% url 'contacto' %}" class="btn btn-outline-info rounded-pill px-4">Contáctanos directamente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,37 @@
+/* Fondo con degradado radial para dar profundidad */
+.faq-page {
+    background: radial-gradient(circle at center, #1e2125 0%, #0d0f12 100%) !important;
+}
+
+/* Tarjetas de preguntas con efecto de cristal */
+.faq-page .accordion-item {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(13, 202, 240, 0.1) !important;
+    border-radius: 12px !important;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.faq-page .accordion-item:hover {
+    border-color: rgba(13, 202, 240, 0.5) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Estilo del botón (la pregunta) */
+.faq-page .accordion-button {
+    color: #0dcaf0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 20px;
+}
+
+/* Cuando la pregunta está abierta */
+.faq-page .accordion-button:not(.collapsed) {
+    background-color: rgba(13, 202, 240, 0.05) !important;
+}
+
+/* Color de la flechita */
+.faq-page .accordion-button::after {
+    filter: invert(1) brightness(2);
+}

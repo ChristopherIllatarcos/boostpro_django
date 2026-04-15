@@ -1,122 +1,343 @@
 {% extends 'web/base.html' %}
 {% load static %}
-
 {% block content %}
-    <header class="hero text-white bg-dark py-5" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1500&auto=format&fit=crop'); background-size: cover; background-position: center;">
-        <div class="container text-center py-5">
-            <h1 class="display-4 fw-bold text-white">Optimiza tu <span class="text-info">Rendimiento Digital</span></h1>
-            <p class="lead text-white-50">Soporte Técnico Avanzado y Desarrollo de Sistemas Windows & Linux en la V Región</p>
-            <a href="#servicios" class="btn btn-info btn-lg mt-3 rounded-pill px-5 text-white fw-bold shadow">Explorar Soluciones</a>
+  {% load static %}
+
+  <!-- ====================================Hero-video=========================================================================================== -->
+  <header class="hero-video position-relative overflow-hidden text-white bg-dark">
+    <video autoplay muted loop playsinline class="position-absolute w-100 h-100" style="object-fit: cover; z-index: 1;">
+      <source src="{% static 'web/videos/video4.mp4' %}" type="video/mp4" />Tu navegador no soporta videos.
+    </video>
+    <div class="position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.6); z-index: 2;"></div>
+    <div class="container text-center py-5 position-relative" style="z-index: 3; padding-top: 100px !important; padding-bottom: 100px !important;">
+      <h1 class="display-3 fw-bold text-white mb-3">Optimiza tu <span class="text-info">Rendimiento Digital</span></h1>
+      <p class="lead text-white-50 fs-4 mb-4">Soporte Técnico Avanzado y Desarrollo de Sistemas a Medida</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-2">
+        <a href="#servicios" class="btn btn-info btn-lg rounded-pill px-5 text-white fw-bold shadow-lg">Explorar Soluciones</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===========================Stealth & Glow=================================================================== -->
+
+  <section class="how-it-works py-5 bg-dark text-white">
+    <div class="container text-center py-4">
+      <h2 class="display-5 fw-bold mb-5">Nuestra <span class="text-info">Metodología</span> de Trabajo</h2>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+          <div class="step-card p-4 h-100 d-flex flex-column">
+            <div class="step-icon-wrapper mb-4">
+              <i class="bi bi-chat-right-dots-fill text-info display-4"></i>
+              <span class="step-number">1</span>
+            </div>
+            <h3 class="h4 fw-bold">Consulta Gratis</h3>
+            <p class="text-white-50 flex-grow-1">Analizamos tu requerimiento de software o problema técnico sin costo inicial para definir la mejor ruta.</p>
+
+            <div class="mt-auto">
+              <a href="{% url 'consulta_detalle' %}" class="btn btn-outline-info rounded-pill px-4 w-100 fw-bold">Más Información</a>
+            </div>
+          </div>
         </div>
-    </header>
 
-    <section id="servicios" class="py-5" style="background: #1a1a1a;">
-        <div class="container">
-            {% include 'web/includes/_servicios.html' %}
+        <div class="col-md-4">
+          <div class="step-card p-4 h-100 d-flex flex-column">
+            <div class="step-icon-wrapper mb-4">
+              <i class="bi bi-cpu-fill text-info display-4"></i>
+              <span class="step-number">2</span>
+            </div>
+            <h3 class="h4 fw-bold">Intervención Digital</h3>
+            <p class="text-white-50 flex-grow-1">Ejecutamos soporte remoto avanzado y desarrollo de sistemas bajo estándares de seguridad.</p>
+
+            <div class="mt-auto">
+              <a href="{% url 'intervencion_detalle' %}" class="btn btn-outline-info rounded-pill px-4 w-100 fw-bold">Más Información</a>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <section id="proyectos" class="py-5" style="background: #121212;">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold text-white">Software <span class="text-info">&</span> Desarrollo Propio</h2>
-            {% include 'web/includes/_proyectos_software.html' %}
+        <div class="col-md-4">
+          <div class="step-card p-4 h-100 d-flex flex-column">
+            <div class="step-icon-wrapper mb-4">
+              <i class="bi bi-check-circle-fill text-info display-4"></i>
+              <span class="step-number">3</span>
+            </div>
+            <h3 class="h4 fw-bold">Optimización Total</h3>
+            <p class="text-white-50 flex-grow-1">Entregamos soluciones listas para producir, garantizando que tu sistema opere con máxima fluidez.</p>
+
+            <div class="mt-auto">
+              <a href="{% url 'optimizacion_detalle' %}" class="btn btn-outline-info rounded-pill px-4 w-100 fw-bold">Más Información</a>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    {% include 'web/includes/_stack.html' %}
+  <!-- ===================================CONTADORES=============================================================================================== -->
 
-    <section id="contacto" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold text-dark">Contacto <span class="text-info">&</span> Presupuesto</h2>
-                <p class="text-muted">Cuéntanos sobre tu requerimiento tecnológico y te responderemos a la brevedad</p>
+  <section class="py-5 bg-dark text-white border-top border-secondary border-opacity-25">
+    <div class="container py-4">
+      <div class="row text-center g-4">
+        <div class="col-md-4">
+          <div class="counter-item p-3">
+            <i class="bi bi-cpu text-info display-4 mb-2"></i>
+            <h2 class="display-4 fw-bold mb-0 mt-2 counter" data-target="150">0</h2>
+            <p class="text-white-50 text-uppercase small ls-2">Optimizaciones</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 border-start border-secondary border-opacity-50">
+          <div class="counter-item p-3">
+            <i class="bi bi-shield-check text-success display-4 mb-2"></i>
+            <h2 class="display-4 fw-bold mb-0 mt-2 counter" data-target="100">0</h2>
+            <p class="text-white-50 text-uppercase small ls-2">Seguridad de Datos %</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 border-start border-secondary border-opacity-50">
+          <div class="counter-item p-3">
+            <i class="bi bi-code-slash text-info display-4 mb-2"></i>
+            <h2 class="display-4 fw-bold mb-0 mt-2 counter" data-target="18">0</h2>
+            <p class="text-white-50 text-uppercase small ls-2">Proyectos Propios</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================Terminal Interactivo====================================================================== -->
+
+  <section class="py-5 bg-black">
+    <div class="container py-5">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="display-5 fw-bold text-white">Auditoría en <span class="text-info">Tiempo Real</span></h2>
+        <p class="text-white-50">Así es como intervenimos y potenciamos tu infraestructura.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9" data-aos="zoom-in">
+          <div class="terminal-window shadow-lg border border-secondary border-opacity-50" style="border-radius: 12px; overflow: hidden; box-shadow: 0 0 40px rgba(13, 202, 240, 0.15) !important;">
+            <div class="bg-dark bg-opacity-75 d-flex align-items-center p-3">
+              <div class="d-flex gap-2">
+                <div style="width:12px; height:12px; border-radius:50%; background:#ff5f56;"></div>
+                <div style="width:12px; height:12px; border-radius:50%; background:#ffbd2e;"></div>
+                <div style="width:12px; height:12px; border-radius:50%; background:#27c93f;"></div>
+              </div>
+              <span class="mx-auto small font-monospace text-white-50">root@boostpro: ~/diagnostico_sistema</span>
             </div>
 
-            <div class="row align-items-center">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h2 class="fw-bold text-dark">¿Listo para comenzar?</h2>
-                    <p class="text-muted fs-5">Soluciones tecnológicas a medida: Especialistas en optimización y despliegue de sistemas multiplataforma.</p>
-                    <div class="mt-4">
-                        <p class="mb-1 fw-bold text-dark"><i class="fas fa-check-circle text-info me-2"></i> Soporte Especializado Windows & Linux</p>
-                        <p class="mb-1 fw-bold text-dark"><i class="fas fa-check-circle text-info me-2"></i> Desarrollo de Software Escalable</p>
-                        <p class="mb-1 fw-bold text-dark"><i class="fas fa-check-circle text-info me-2"></i> Consultoría en Ciberseguridad</p>
-                    </div>
+            <div class="p-4 font-monospace" style="background: #0d1117; min-height: 320px; font-size: 0.95rem; line-height: 1.6;">
+              <div id="typed-strings" style="display: none;">
+                <p>
+                  <span class="text-success">boostpro@boostpro:~$</span> sudo systemctl start boostpro-platform.service
+                </p>
+                <p>
+                  <span class="text-success">boostpro@boostpro:~$</span> sudo systemctl start boostpro-backend.service
+                </p>
+                <p>
+                  <span class="text-info">[DEBUG]</span> Initializing <span class="text-info">net localgroup administrators</span> micro-services...
+                </p>
+                <p>
+                  <span class="text-info">[INFO]</span> Loading Java Virtual Machine (JVM) configuration...
+                </p>
+                <p>
+                  <span class="text-info">[INFO]</span> Connecting to PostgreSQL cluster @localhost:5432
+                </p>
+                <p>
+                  <span class="text-success">[READY]</span> Data Base Engine is live on port 8000
+                </p>
+                <p>--------------------------------------------------</p>
+              </div>
+              <span id="typed" class="text-success"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================SOFTWARE Y DESARROLLO================================================ -->
+
+  <section id="servicios" class="py-5" style="background: #1a1a1a;">
+    <div class="container">
+      {% include 'web/includes/_servicios.html' %}
+    </div>
+  </section>
+
+  <section id="proyectos" class="py-5" style="background: #121212;">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold text-white">Software <span class="text-info">&</span> Desarrollo</h2>
+      {% include 'web/includes/_proyectos_software.html' %}
+    </div>
+  </section>
+
+  <!-- ===================================BLOG================================================================================= -->
+
+  <section id="blog" class="py-5" style="
+    background-color: #121212;
+    background-image: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), 
+                      url('https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+">
+    <div class="container-fluid px-4 px-md-5">
+      {% include 'web/includes/blog.html' %}
+    </div>
+  </section>
+
+  <!-- ========================================CONTACTO======================================================================= -->
+  {% include 'web/includes/_stack.html' %}
+
+  <section id="contacto" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold text-dark">Contacto <span class="text-info">&</span> Presupuesto</h2>
+        <p class="text-muted">Cuéntanos sobre tu requerimiento tecnológico y te responderemos a la brevedad</p>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h2 class="fw-bold text-dark">¿Listo para comenzar?</h2>
+          <p class="text-muted fs-5">Soluciones tecnológicas a medida: Especialistas en optimización y despliegue de sistemas multiplataforma.</p>
+          <div class="mt-4">
+            <p class="mb-1 fw-bold text-dark">
+              <i class="fas fa-check-circle text-info me-2"></i> Soporte Especializado Windows & Linux
+            </p>
+            <p class="mb-1 fw-bold text-dark">
+              <i class="fas fa-check-circle text-info me-2"></i> Desarrollo de Software Escalable
+            </p>
+            <p class="mb-1 fw-bold text-dark">
+              <i class="fas fa-check-circle text-info me-2"></i> Consultoría en Ciberseguridad
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow border-0 rounded-4 p-4 bg-white">
+            <form method="POST" action="{% url 'home' %}" id="formContacto">
+              {% csrf_token %}
+              <div class="mb-3 text-dark">
+                <label class="form-label fw-bold">Nombre Completo / Empresa</label>
+                {{ form.nombre }}
+              </div>
+              <div class="row text-dark">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold">Email</label>
+                  {{ form.email }}
                 </div>
-                <div class="col-lg-8">
-                    <div class="card shadow border-0 rounded-4 p-4 bg-white">
-                        <form method="POST" action="{% url 'contacto' %}" id="formContacto">
-                            {% csrf_token %}
-                            <div class="mb-3 text-dark">
-                                <label class="form-label fw-bold">Nombre Completo / Empresa</label>
-                                {{ form.nombre }}
-                            </div>
-                            <div class="row text-dark">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label fw-bold">Email</label>
-                                    {{ form.email }}
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label fw-bold">Teléfono</label>
-                                    {{ form.telefono }}
-                                </div>
-                            </div>
-                            <div class="mb-3 text-dark">
-                                <label class="form-label fw-bold">Asunto</label>
-                                {{ form.asunto }}
-                            </div>
-                            <div class="mb-4 text-dark">
-                                <label class="form-label fw-bold">Mensaje / Detalles del Requerimiento</label>
-                                {{ form.mensaje }}
-                            </div>
-                            <button type="button" id="btnEnviar" class="btn btn-info w-100 fw-bold text-white btn-lg shadow-sm rounded-pill">
-                                <i class="fas fa-paper-plane me-2"></i> Enviar Solicitud
-                            </button>
-                        </form>
-                    </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold">Teléfono</label>
+                  {{ form.telefono }}
                 </div>
-            </div>
+              </div>
+              <div class="mb-3 text-dark">
+                <label class="form-label fw-bold">Asunto</label>
+                {{ form.asunto }}
+              </div>
+              <div class="mb-4 text-dark">
+                <label class="form-label fw-bold">Mensaje / Detalles del Requerimiento</label>
+                {{ form.mensaje }}
+              </div>
+              <button type="submit" id="btnEnviar" class="btn btn-info w-100 fw-bold text-white btn-lg shadow-sm rounded-pill"><i class="fas fa-paper-plane me-2"></i> Enviar Solicitud</button>
+            </form>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="py-0">
-        <div class="container-fluid p-0">
-            <div class="shadow-sm" style="filter: grayscale(100%) invert(90%) contrast(90%); border-top: 1px solid #dee2e6;">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107065.73809614486!2d-71.6033758!3d-33.0472389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689e12739268305%3A0x7d287383f089859f!2sValpara%C3%ADso%2C%20Chile!5e0!3m2!1ses!2scl!4v1710000000000!5m2!1ses!2scl" 
-                    width="100%" 
-                    height="450" 
-                    style="border:0; display: block;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                 Bryan
-                </iframe>
-            </div>
+  <!-- ======================================SOFTWARE Y PLATAFORMAS==================================================================== -->
+
+  <section class="tech-slider-section bg-dark text-center py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <p class="text-white lead opacity-75 mb-4">Software y plataformas que potenciamos y utilizamos para dar soluciones.</p>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.getElementById('btnEnviar').addEventListener('click', function(e) {
-            const form = document.getElementById('formContacto');
-            
-            if (form.checkValidity()) {
-                Swal.fire({
-                    title: '¡Solicitud Recibida!',
-                    text: 'Nuestro equipo se pondrá en contacto contigo a la brevedad.',
-                    icon: 'success',
-                    confirmButtonColor: '#0dcaf0',
-                    confirmButtonText: 'Entendido',
-                    background: '#ffffff',
-                    color: '#212529'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit(); 
-                    }
-                });
-            } else {
-                form.reportValidity();
-            }
-        });
-    </script>
+    <div class="tech-slider-container">
+      <div class="tech-slider-track">
+        <div class="slide">
+          <img src="{% static 'web/img/java.png' %}" alt="Java" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/css.png' %}" alt="Css" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/django.png' %}" alt="Django" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/html.png' %}" alt="Html" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/js.png' %}" alt="Js" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/mint.png' %}" alt="Mint" />
+        </div>
+
+        <div class="slide">
+          <img src="{% static 'web/img/msql.png' %}" alt="MySQL" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/sqlite.png' %}" alt="SQLite" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/win.png' %}" alt="Windows" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/android.png' %}" alt="Android" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/net.png' %}" alt="NetBeans" />
+        </div>
+        <div class="slide">
+          <img src="{% static 'web/img/post.png' %}" alt="PostGre" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================MAPA======================================================================== -->
+
+  <section class="py-0">
+    <div class="container-fluid p-0">
+      <div class="shadow-sm" style="filter: grayscale(100%) invert(90%) contrast(90%); border-top: 1px solid #dee2e6;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107065.73809614486!2d-71.6033758!3d-33.0472389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689e12739268305%3A0x7d287383f089859f!2sValpara%C3%ADso%2C%20Chile!5e0!3m2!1ses!2scl!4v1710000000000!5m2!1ses!2scl" width="100%" height="450" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">Bryan</iframe>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <button id="backToTop" class="btn btn-info text-white shadow-lg" title="Volver arriba" style="
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; /* Se oculta por defecto */
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- ========================================SCRIPTS================================================================= -->
+
+  <script>
+    // Si Django envía un mensaje de éxito, SweetAlert lo muestra al cargar la página
+    {% if messages %}
+        {% for message in messages %}
+            Swal.fire({
+                title: '{{ message.tags|title }}',
+                text: '{{ message }}',
+                icon: '{{ message.tags }}', // success, error, etc.
+                confirmButtonColor: '#0dcaf0'
+            });
+        {% endfor %}
+    {% endif %}
+</script>
 {% endblock %}

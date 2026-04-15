@@ -1,0 +1,53 @@
+/* Estilos específicos para la sección Blog */
+.bg-secondary-dark {
+    background-color: #1e2125 !important;
+}
+
+.text-light-50 {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+    
+
+.card-blog-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(13, 202, 240, 0.2) !important;
+    border-color: #0dcaf0 !important;
+}
+
+/* Ajuste para las imágenes de las cards */
+.card-blog-hover img {
+    height: 200px;
+    object-fit: cover;
+    filter: brightness(0.9);
+    transition: filter 0.3s ease;
+}
+
+.card-blog-hover:hover img {
+    filter: brightness(1.1);
+}
+
+/* --- ESTILO FULL WIDTH PARA LA SECCIÓN DEL BLOG --- */
+#blog {
+    /* 1. Definimos el fondo base oscuro */
+    background-color: #121212 !important; /* Importante para asegurar el color */
+    
+    /* 2. Añadimos la imagen de fondo con transparencia */
+    /* Usamos 'linear-gradient' para oscurecer la imagen y 'url' para cargarla */
+    /* 'rgba(18, 18, 18, 0.93)' es el color base #121212 con 93% de opacidad (muy sutil) */
+    background-image: linear-gradient(rgba(18, 18, 18, 0.93), rgba(18, 18, 18, 0.98)), 
+                      url('https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=1500&auto=format&fit=crop'); /* Imagen de patrón tech sutil */
+    
+    /* 3. Configuraciones para que la imagen se vea bien */
+    background-size: cover; /* Cubre todo el ancho y alto */
+    background-position: center; /* Centrada */
+    background-repeat: no-repeat; /* No se repite */
+    background-attachment: fixed; /* Opcional: Efecto parallax sutil al hacer scroll (se ve genial) */
+}
+
+/* --- Ajuste para las tarjetas para que resalten sobre el nuevo fondo --- */
+.card-blog-hover {
+    background-color: rgba(30, 30, 30, 0.9) !important; /* Un gris un poco más claro que el fondo, con transparencia */
+    backdrop-filter: blur(5px); /* Efecto de vidrio esmerilado (opcional, muy moderno) */
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Un borde casi invisible para definir la tarjeta */
+}

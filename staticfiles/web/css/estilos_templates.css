@@ -1,0 +1,133 @@
+/* --- Estilos para Páginas de Detalle --- */
+
+.service-detail-header {
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgba(13, 202, 240, 0.3);
+}
+
+.service-body {
+    background-color: #0d0e12; /* Un poco diferente al home para variar */
+}
+
+/* Efecto de las listas de características */
+.features-list i {
+    filter: drop-shadow(0 0 5px rgba(13, 202, 240, 0.5));
+}
+
+/* La tarjeta lateral (Sidebar) */
+.card.border-info {
+    border-width: 1px;
+    transition: transform 0.3s ease;
+}
+
+.card.border-info:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(13, 202, 240, 0.2) !important;
+}
+
+
+/* --- Estilos Globales para Templates de Servicio --- */
+
+.service-detail-header {
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid rgba(13, 202, 240, 0.4);
+}
+
+.service-body {
+    background-color: #0b0c10 !important;
+}
+
+/* Tarjetas laterales con efecto Glassmorphism */
+.glass-card {
+    border-radius: 25px;
+    border: 1px solid rgba(13, 202, 240, 0.3) !important;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 0 25px rgba(13, 202, 240, 0.2) !important;
+    transform: translateY(-5px);
+}
+
+/* Iconos de lista con brillo */
+.features-list i {
+    filter: drop-shadow(0 0 8px rgba(13, 202, 240, 0.6));
+}
+
+/* Animación de entrada para el contenido */
+.service-body .container {
+    animation: fadeInPage 1s ease-out;
+}
+
+.glass-card h3 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Estilos Específicos para el Header de Intervención --- */
+
+.header-intervencion {
+    /* IMAGEN DE FONDO: Circuitos y código abstracto en azul neón */
+    /* Usamos una URL segura de Unsplash como respaldo */
+    background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax sutil */
+    border-bottom: 2px solid rgba(13, 202, 240, 0.3); /* Borde celeste inferior */
+}
+
+
+/* Resplandor blanco suave */
+.text-glow-white {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Resplandor celeste (Info Glow) */
+.text-glow-info {
+    text-shadow: 0 0 15px rgba(13, 202, 240, 0.7),
+                 0 0 30px rgba(13, 202, 240, 0.4);
+}
+
+/* Limitar ancho de párrafos largos para mejor lectura */
+.max-width-600 {
+    max-width: 600px;
+}
+
+/* Asegurar que el contenido del header esté por encima del overlay negro */
+.position-relative.z-1 {
+    z-index: 1;
+}
+.bg-opacity-75 {
+    opacity: 0.75; /* Nivel de oscuridad sobre la imagen */
+}
+
+
+.ls-2 {
+    letter-spacing: 2px;
+}
+
+.counter-item i {
+    filter: drop-shadow(0 0 10px rgba(13, 202, 240, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.counter-item:hover i {
+    transform: translateY(-10px);
+}
+
+.counter-item h2 {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Estilo Windows 11 */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

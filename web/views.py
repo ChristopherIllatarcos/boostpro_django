@@ -1,103 +1,108 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.contrib import messages
 from django.conf import settings
 from django.utils.html import strip_tags
 from .forms import ContactoForm
-from .models import Servicio, Proyecto 
+from .models import Servicio, Proyecto, Post, FAQ
 
 # Create your views here.
 def home(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
         if form.is_valid():
+            # 1. Guardamos en la base de datos
             form.save()
-            messages.success(request, '¡Mensaje enviado con éxito!')
+
+            # 2. Extraemos datos para el correo
+            nombre = form.cleaned_data['nombre']
+            email_cliente = form.cleaned_data['email']
+            asunto_cliente = form.cleaned_data.get('asunto', 'Nuevo Contacto')
+            mensaje_cliente = form.cleaned_data['mensaje']
+
+            # --- ENVÍO DE CORREOS ---
+            try:
+                # Correo para ti (Notificación)
+                asunto_para_ti = f"🚀 NUEVO LEAD: {asunto_cliente}"
+                cuerpo_para_ti = f"Nombre: {nombre}\nEmail: {email_cliente}\nMensaje: {mensaje_cliente}"
+                send_mail(asunto_para_ti, cuerpo_para_ti, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
+
+                # Respuesta automática para el cliente
+                asunto_auto = "Confirmación de contacto - BoostPro.cl"
+                html_content = f"""
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px;">
+                    <h2 style="color: #0dcaf0;">¡Hola {nombre}!</h2>
+                    <p>He recibido tu mensaje sobre <strong>{asunto_cliente}</strong>.</p>
+                    <p>Te responderé a la brevedad para ayudarte con tu requerimiento.</p>
+                    <hr>
+                    <p style="font-size: 12px; color: #666;"><strong>Chris - Linux Developer</strong><br>BoostPro.cl</p>
+                </div>
+                """
+                msg = EmailMultiAlternatives(asunto_auto, strip_tags(html_content), settings.EMAIL_HOST_USER, [email_cliente])
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+
+                messages.success(request, '¡Mensaje enviado con éxito! Revisa tu correo.')
+            except Exception as e:
+                
+                messages.warning(request, 'Error al enviar el correo, pero el mensaje fue guardado.')
+            
             return redirect('home')
     else:
         form = ContactoForm()
     
-    # --- AQUÍ ESTÁ EL CAMBIO: Traemos la info de la Base de Datos ---
     servicios = Servicio.objects.filter(activo=True)
     proyectos = Proyecto.objects.all().order_by('orden') 
+    posts = Post.objects.all().order_by('-fecha_publicacion')[:3]
+   
     
-    # Mandamos todo al HTML dentro del diccionario final
     return render(request, 'web/home.html', {
         'form': form,
         'servicios': servicios,
-        'proyectos': proyectos
-    })
-
+        'proyectos': proyectos,
+        'posts': posts
+        
+    })  
 
 def suitecontrol(request):
     return render(request, 'web/suitecontrol.html')
 
 def contacto(request):
-    if request.method == "POST":
-        form = ContactoForm(request.POST)
-        if form.is_valid():
-            # Extraemos los datos limpios del Form
-            nombre = form.cleaned_data['nombre']
-            email_cliente = form.cleaned_data['email']
-            telefono = form.cleaned_data['telefono'] # Nuevo campo
-            asunto_cliente = form.cleaned_data['asunto']
-            mensaje_cliente = form.cleaned_data['mensaje']
-
-            # Guardar en la base de datos (opcional, pero recomendado)
-            form.save()
-
-            # --- 1. NOTIFICACIÓN PARA TI (Chris) ---
-            asunto_para_ti = f"🚀 NUEVO LEAD: {asunto_cliente}"
-            cuerpo_para_ti = f"Nombre: {nombre}\nEmail: {email_cliente}\nTeléfono: {telefono}\nMensaje: {mensaje_cliente}"
-            
-            try:
-                # Envío a ti
-                send_mail(asunto_para_ti, cuerpo_para_ti, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
-
-                # --- 2. RESPUESTA AUTOMÁTICA HTML PARA EL CLIENTE ---
-                asunto_auto = f"Confirmación de contacto - BoostPro.cl"
-                html_content = f"""
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 10px; padding: 20px;">
-                    <h2 style="color: #0dcaf0; text-align: center;">¡Hola {nombre}!</h2>
-                    <p>Gracias por contactar a <strong>BoostPro.cl</strong>. He recibido tu mensaje sobre <strong>{asunto_cliente}</strong>.</p>
-                    <p style="background-color: #f8f9fa; padding: 15px; border-left: 5px solid #0dcaf0;">
-                        <em>"{mensaje_cliente}"</em>
-                    </p>
-                    <p>Revisaré los detalles técnicos y te responderé lo antes posible para ayudarte con tu requerimiento.</p>
-                    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p style="text-align: center; color: #666; font-size: 12px;">
-                        <strong>Chris - Linux Developer</strong><br>
-                        Especialista en Soporte, Optimización y Desarrollo de Software<br>
-                        Región de Valparaíso, Chile
-                    </p>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="https://wa.me/56926231939" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Hablar por WhatsApp</a>
-                    </div>
-                </div>
-                """
-                text_content = strip_tags(html_content) 
-
-                msg = EmailMultiAlternatives(asunto_auto, text_content, settings.EMAIL_HOST_USER, [email_cliente])
-                msg.attach_alternative(html_content, "text/html")
-                msg.send()
-
-                messages.success(request, "¡Mensaje enviado con éxito! Revisa tu correo.")
-                return redirect('home')
-                
-            except Exception as e:
-                messages.error(request, "Error al enviar el correo, pero el mensaje fue guardado.")
-                return redirect('home')
-        else:
-            messages.error(request, "Hubo un error en el formulario. Revisa los datos.")
-    
-    # Si es GET, cargamos la home con el formulario
-    servicios = Servicio.objects.all()
-    proyectos = Proyecto.objects.all()
-    return render(request, 'web/home.html', {
-        'servicios': servicios,
-        'proyectos': proyectos,
-        'form': ContactoForm()
-    })
+    return redirect('home')
 
 def avacif_view(request):
     return render(request, 'web/includes/avacif.html')
+
+def detalle_post(request, slug):
+    # Buscamos el post específico
+    post = get_object_or_404(Post, slug=slug)
+    
+    # IMPORTANTE: Usa un template nuevo, no el 'include'
+    return render(request, 'web/detalle_post.html', {
+        'post': post
+    })
+    
+
+def faq_list(request):
+    faqs = FAQ.objects.all().order_by('orden')
+    return render(request, 'web/faq_list.html', {'faqs': faqs})
+
+
+#==========================VISTAS SERVICIOS=================================
+
+def consulta_view(request):
+    return render(request, 'web/servicios/consulta.html')
+
+def intervencion_view(request):
+    return render(request, 'web/servicios/intervencion.html')
+
+def optimizacion_view(request):
+    return render(request, 'web/servicios/optimizacion.html')
+
+
+#============================ERROR 404==================================================
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)
+
+handler404 = custom_404

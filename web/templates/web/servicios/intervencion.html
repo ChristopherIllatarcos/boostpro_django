@@ -1,0 +1,133 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block content %}
+  <header class="service-detail-header header-intervencion py-5 text-white position-relative overflow-hidden">
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-75 z-0"></div>
+    
+    <div class="container py-5 text-center position-relative z-1">
+        <div class="badge bg-info text-dark mb-3 rounded-pill px-4 py-2 fw-bold shadow-sm" style="letter-spacing: 1px; font-size: 0.8rem;">
+            PASO 02
+        </div>
+        
+        <h1 class="display-3 fw-bold text-glow-white mb-3">
+            Intervención <span class="text-info text-glow-info">Digital</span>
+        </h1>
+        
+        <p class="lead opacity-75 max-width-600 mx-auto">
+            Soluciones de software avanzadas y soporte técnico especializado.
+        </div>
+    </div>
+</header>
+
+ <section class="service-body py-5 bg-dark text-white">
+    <div class="container py-4">
+      <div class="row g-5 align-items-center"> <div class="col-lg-6">
+            <div class="position-relative overflow-hidden rounded-5 shadow-lg" style="border: 2px solid rgba(13, 202, 240, 0.3);">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop" 
+                     alt="Soporte Técnico BoostPro" 
+                     class="img-fluid w-100 object-fit-cover" 
+                     style="filter: brightness(0.7) contrast(1.2); min-height: 400px;">
+                <div class="position-absolute bottom-0 start-0 w-100 h-50" style="background: linear-gradient(to top, rgba(11, 12, 16, 0.9), transparent);"></div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+          <h2 class="h3 fw-bold mb-4 text-info"><i class="bi bi-shield-check me-2"></i>Soporte Técnico de Alto Nivel</h2>
+          <p class="lh-lg text-white-50">
+            En <strong>BoostPro</strong>, la intervención digital va más allá de un simple arreglo. Realizamos una auditoría lógica integral de tu <strong>entorno operativo</strong> ya sea Windows o distribuciones Linux garantizando la máxima estabilidad, seguridad y un rendimiento optimizado al hardware.
+          </p>
+
+          <div class="features-list mt-4 mb-5">
+            <div class="d-flex mb-3">
+              <i class="bi bi-patch-check-fill text-info fs-4 me-3"></i>
+              <div>
+                <h4 class="h5 fw-bold text-white">Optimización de Registro</h4>
+                <p class="text-white-50 small">Depuramos entradas obsoletas para mejorar la velocidad de arranque y respuesta.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-3">
+              <i class="bi bi-patch-check-fill text-info fs-4 me-3"></i>
+              <div>
+                <h4 class="h5 fw-bold text-white">Seguridad y Limpieza</h4>
+                <p class="text-white-50 small">Eliminación de software malintencionado y configuración de firewalls avanzados.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-dark bg-opacity-50 border-info p-4 shadow-lg glass-card" style="backdrop-filter: blur(15px); border-radius: 20px; border: 1px solid rgba(13, 202, 240, 0.4) !important;">
+            <h3 class="h4 fw-bold mb-3 text-white">¿Listo para <span class="text-info">empezar</span>?</h3>
+            <p class="small text-white-50">Iniciamos la intervención de manera remota o presencial según tu necesidad técnica.</p>
+
+            <hr class="border-info opacity-25" />
+
+            <ul class="list-unstyled mb-4 text-white small">
+              <li class="mb-2">
+                <i class="bi bi-clock text-info me-2"></i> Respuesta en <strong>menos de 2h</strong>
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-laptop text-info me-2"></i> Soporte Remoto Seguro
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-file-earmark-code text-info me-2"></i> Reporte de intervención
+              </li>
+            </ul>
+
+            <div class="d-flex gap-2">
+                <a href="https://wa.me/56926231939" target="_blank" class="btn btn-info flex-grow-1 fw-bold rounded-pill py-3 text-white shadow btn-whatsapp-glow d-flex align-items-center justify-content-center" style="font-size: 0.85rem;">
+                    <i class="bi bi-whatsapp me-2"></i> WhatsApp
+                </a>
+                <button type="button" class="btn btn-outline-info flex-grow-1 fw-bold rounded-pill py-3 d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#emailModal" style="font-size: 0.85rem;">
+                    <i class="bi bi-envelope-fill me-2"></i> Correo
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="modal fade" id="emailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border-info text-white" style="backdrop-filter: blur(20px); border-radius: 20px; border: 1px solid rgba(13, 202, 240, 0.4) !important;">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title fw-bold"><i class="bi bi-envelope-at text-info me-2"></i>Contacto BoostPro</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center py-4">
+          <p class="text-white-50 mb-4">Copia nuestro correo para enviarnos tus requerimientos técnicos.</p>
+          <div class="input-group mb-3 px-3">
+            <input type="text" id="userEmail" class="form-control bg-dark text-info border-info fw-bold text-center" value="contacto.boostpro@gmail.com" readonly>
+            <button class="btn btn-info fw-bold" type="button" onclick="copyToClipboard()" id="copyBtn">
+              <i class="bi bi-clipboard"></i> Copiar
+            </button>
+          </div>
+          <div id="copyMessage" class="text-success small d-none">
+              <i class="bi bi-check-circle"></i> ¡Copiado con éxito!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function copyToClipboard() {
+      var emailInput = document.getElementById("userEmail");
+      navigator.clipboard.writeText(emailInput.value).then(function() {
+          var btn = document.getElementById("copyBtn");
+          var msg = document.getElementById("copyMessage");
+          
+          btn.innerHTML = '<i class="bi bi-clipboard-check"></i> ¡Listo!';
+          btn.classList.replace('btn-info', 'btn-success');
+          msg.classList.remove('d-none');
+
+          setTimeout(function() {
+              btn.innerHTML = '<i class="bi bi-clipboard"></i> Copiar';
+              btn.classList.replace('btn-success', 'btn-info');
+              msg.classList.add('d-none');
+          }, 3000);
+      });
+  }
+  </script>
+
+{% endblock %}

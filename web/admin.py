@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contacto, Servicio, Proyecto
+from .models import Contacto, Servicio, Proyecto, Post, FAQ
 
 # Register your models here.
 
@@ -33,3 +33,20 @@ class ProyectoAdmin(admin.ModelAdmin):
     # IMPORTANTE: El primer campo (titulo) NO debe estar en list_editable
     list_display = ('titulo', 'orden') 
     list_editable = ('orden',)
+    
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    # Esto configura las columnas que verás en la lista del admin
+    list_display = ('titulo', 'fecha_publicacion', 'autor')
+    
+    # Esto permite que el slug se complete solo mientras escribes el título
+    prepopulated_fields = {'slug': ('titulo',)}
+    
+    # Agregamos un buscador por si llegas a tener muchos posts
+    search_fields = ('titulo', 'contenido')
+    
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('pregunta', 'orden')
+    list_editable = ('orden',) 
+    search_fields = ('pregunta', 'respuesta')

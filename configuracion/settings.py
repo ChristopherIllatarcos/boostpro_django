@@ -14,7 +14,9 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # 3. Variables Básicas
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-cambiame')
-DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = os.getenv('DEBUG') == 'False'
+
+ALLOWED_HOSTS = ['boostpro.cl', '127.0.0.1', 'localhost']
 
 # 4. Diagnóstico (solo en consola si DEBUG=True)
 if DEBUG:

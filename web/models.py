@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -45,3 +46,27 @@ class Proyecto(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+class Post(models.Model):
+    titulo = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True) # Para que la URL sea boostpro.cl/blog/mi-post
+    contenido = models.TextField()
+    imagen = models.ImageField(upload_to='blog/', null=True, blank=True)
+    fecha_publicacion = models.DateTimeField(auto_now_add=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
+
+class FAQ(models.Model):
+    pregunta = models.CharField(max_length=255)
+    respuesta = models.TextField()
+    orden = models.IntegerField(default=0, help_text="Orden en que se mostrará")
+
+    class Meta:
+        verbose_name = "Pregunta Frecuente"
+        verbose_name_plural = "Preguntas Frecuentes"
+        ordering = ['orden']
+
+    def __str__(self):
+        return self.pregunta
