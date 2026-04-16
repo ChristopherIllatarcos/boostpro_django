@@ -396,9 +396,8 @@ body {
 
 
 
-/*====================================================================
+/*=================== --- Slider de Tecnologías Infinito (Versión Pro) --- ==========================*/
 
-/* --- Slider de Tecnologías Infinito (Versión Pro) --- */
 
 .tech-slider-section {
     /* FONDO: Usaremos el azul vibrante de tu referencia */
@@ -500,7 +499,6 @@ body {
     100% { transform: translateX(-50%); } /* Mueve la mitad para que sea infinito */
 }
 
-/*=====================================================================*/
 
 
 /*==================HEDADER============================================*/
@@ -646,6 +644,73 @@ body {
     /* Opcional: un pequeño brillo cuando despega */
     filter: drop-shadow(0 5px 15px rgba(13, 202, 240, 0.6));
 }
+
+
+/*==================== Botón BoostPro Nivel Senior==========================================================================*/
+.btn-boostpro {
+    background-color: #0dcaf0; /* Azul profundo BoostPro */
+    color: #ffffff;
+    font-weight: 800; /* Super negrita */
+    font-size: 1.25rem; /* Tamaño LG */
+    padding: 12px 30px;
+    border-radius: 50px; /* Bordes redondeados */
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out; /* Transición suave para todos los efectos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra inicial */
+    position: relative; /* Para el efecto de "flotar" */
+}
+
+/* Efecto Flotante y Brillo al Hover */
+.btn-boostpro:hover {
+    background-color: #007bff; /* Azul brillante al pasar el cursor */
+    color: #ffffff;
+    border-color: #ffffff; /* Borde blanco para el brillo */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); /* Brillo (Glow) azul */
+    transform: translateY(-5px); /* Efecto flotante: sube 5px */
+    cursor: pointer;
+}
+
+/* Efecto al hacer clic (opcional) */
+.btn-boostpro:active {
+    transform: translateY(-2px); /* Baja un poco al presionar */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Reduce el brillo */
+}
+
+
+
+/*===================================GUIA DE REGISTRO===========================================================*/
+
+.card-guia-pro {
+        background-color: #1a1d20 !important;
+        border: 2px solid #0dcaf0 !important;
+        border-radius: 15px !important;
+        box-shadow: 0 0 25px rgba(13, 202, 240, 0.3) !important;
+    }
+    .icono-guia-cian {
+        color: #0dcaf0 !important;
+        filter: drop-shadow(0 0 8px rgba(13, 202, 240, 0.6));
+    }
+    .btn-guia-brillante {
+        background-color: #0dcaf0 !important;
+        color: #000 !important;
+        border: none !important;
+        box-shadow: 0 0 15px rgba(13, 202, 240, 0.5) !important;
+        transition: all 0.3s ease;
+    }
+    .btn-guia-brillante:hover {
+        box-shadow: 0 0 30px rgba(13, 202, 240, 0.9) !important;
+        transform: translateY(-3px);
+    }
+    .input-oscuro {
+        background-color: #2b3035 !important;
+        border: 1px solid #444 !important;
+        color: white !important;
+    }
+    .input-oscuro:focus {
+        border-color: #0dcaf0 !important;
+        box-shadow: 0 0 10px rgba(13, 202, 240, 0.5) !important;
+    }
+
 
 /*===============Estilo para que el menú móvil también se vea bien=========================================================*/
 

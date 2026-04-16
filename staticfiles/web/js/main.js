@@ -209,4 +209,32 @@ function iniciarContadoresPro() {
     });
 })();
 
+//========================== TEMAS OSCURO Y BLANCO ===================================
+const toggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+// Usamos 'dark' por defecto si no hay nada guardado
+const currentTheme = localStorage.getItem('theme') || 'dark'; 
+
+// Aplicar el tema al cargar la página
+document.documentElement.setAttribute('data-bs-theme', currentTheme);
+if (currentTheme === 'light' && themeIcon) {
+    themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
+}
+
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        // Importante: leer el atributo 'data-bs-theme'
+        let theme = document.documentElement.getAttribute('data-bs-theme');
+        
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            if(themeIcon) themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+            if(themeIcon) themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
 
