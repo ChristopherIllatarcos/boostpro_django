@@ -209,31 +209,32 @@ function iniciarContadoresPro() {
     });
 })();
 
-//==========================TEMAS OCURO Y BLANCO//========================================================
+//========================== TEMAS OSCURO Y BLANCO ===================================
 const toggleBtn = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
-const currentTheme = localStorage.getItem('theme');
+// Usamos 'dark' por defecto si no hay nada guardado
+const currentTheme = localStorage.getItem('theme') || 'dark'; 
 
-// Si ya tenía un tema guardado, lo aplicamos
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'light') {
-        themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
-    }
+// Aplicar el tema al cargar la página
+document.documentElement.setAttribute('data-bs-theme', currentTheme);
+if (currentTheme === 'light' && themeIcon) {
+    themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
 }
 
-toggleBtn.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    
-    if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
-        localStorage.setItem('theme', 'light');
-    }
-});
-
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        // Importante: leer el atributo 'data-bs-theme'
+        let theme = document.documentElement.getAttribute('data-bs-theme');
+        
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            if(themeIcon) themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+            if(themeIcon) themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
 
