@@ -126,6 +126,112 @@
 }
 
 
+/*===============================================================================================*/
+
+
+/* Color de fondo oscuro personalizado para el cuerpo del toast */
+.bg-boostpro-dark {
+    background-color: #1a1d20 !important; /* O el color exacto que uses en tus tarjetas */
+}
+
+/* Color cian BoostPro para resaltar texto e iconos */
+.text-cyan {
+    color: #0dcaf0 !important;
+}
+
+/* Borde cian para la cabecera */
+.border-cyan {
+    border-color: #0dcaf0 !important;
+}
+
+/* Botón Cian Personalizado */
+.btn-cyan {
+    background-color: #0dcaf0 !important;
+    border-color: #0dcaf0 !important;
+}
+.btn-cyan:hover {
+    background-color: #0bb5d8 !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.5);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 1. Definimos la animación de pulso (Glow Pulse) */
+@keyframes glowPulse {
+    0% {
+        /* Brillo suave al inicio */
+        box-shadow: 0 0 10px rgba(13, 202, 240, 0.4);
+    }
+    50% {
+        /* Brillo máximo a la mitad */
+        box-shadow: 0 0 25px rgba(13, 202, 240, 0.8), 
+                    0 0 10px rgba(13, 202, 240, 0.6) inset; /* Brillo interno también */
+    }
+    100% {
+        /* Volvemos al brillo suave */
+        box-shadow: 0 0 10px rgba(13, 202, 240, 0.4);
+    }
+}
+
+/* 2. Aplicamos la animación y el estilo cian al Toast */
+#securityToast {
+    /* Quitamos el shadow por defecto de Bootstrap y aplicamos el nuestro */
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.4) !important;
+    
+    /* Hacemos el borde un poco más visible para el contraste */
+    border: 1px solid rgba(13, 202, 240, 0.6) !important;
+    
+    /* AGREGAMOS LA ANIMACIÓN (se repite infinitamente cada 2.5 segundos) */
+    animation: glowPulse 2.5s infinite ease-in-out;
+    
+    /* Aseguramos que la cabecera también tenga el borde cian */
+    overflow: hidden; /* Para que el borde redondeado funcione con la cabecera */
+}
+
+/* 3. Reforzamos el efecto en la cabecera (Opcional, pero se ve mejor) */
+#securityToast .toast-header {
+    border-bottom: 1px solid rgba(13, 202, 240, 0.6) !important;
+}
+
+/* 4. Aseguramos que el botón de cerrar también combine */
+#securityToast .btn-close-white {
+    opacity: 0.8;
+}
+#securityToast .btn-close-white:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px rgba(13, 202, 240, 1));
+}
+
+
+
+/*===============================================================================================*/
+
+
+.mono {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.border-cyan {
+    border: 1px solid #0dcaf0 !important;
+}
+
+/* El resplandor para que combine con el Toast */
+#diagnostico-pro .card {
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.2) !important;
+}
+
+#diagnostico-pro .form-select:focus {
+    border-color: #0dcaf0;
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.5);
+}
+
+
+
+
+/*===============================================================================================*/
 @keyframes fadeInPage {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }

@@ -171,6 +171,72 @@
     </div>
   </section>
 
+
+  <!--====================================SISTEMA DE ANÁLISIS PREVENTIVO===============================================================-->
+  <section id="diagnostico-pro" class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card bg-black border-cyan shadow-lg">
+                    <div class="card-header border-cyan bg-dark d-flex align-items-center">
+                        <div class="d-flex gap-1 me-3">
+                            <span class="badge bg-danger rounded-circle p-1" style="width:12px; height:12px;"></span>
+                            <span class="badge bg-warning rounded-circle p-1" style="width:12px; height:12px;"></span>
+                            <span class="badge bg-success rounded-circle p-1" style="width:12px; height:12px;"></span>
+                        </div>
+                        <small class="text-cyan mono">boostpro@diagnostico: ~</small>
+                    </div>
+                    <div class="card-body p-4 mono">
+                        <div id="pantalla-inicio">
+                            <p class="text-cyan mb-3">>>> SISTEMA DE ANÁLISIS PREVENTIVO V1.0</p>
+                            <label class="form-label text-white-50">Selecciona el síntoma principal:</label>
+                            <select id="sintoma" class="form-select bg-dark text-white border-secondary mb-3">
+                                <option value="lento">Sistema extremadamente lento / Lag</option>
+                                <option value="seguridad">Sospecha de Virus o Malware</option>
+                                <option value="pantallazo">Pantallazos azules o reinicios</option>
+                                <option value="otro">Optimización General / Gaming</option>
+                            </select>
+                            <button onclick="iniciarAnalisis()" class="btn btn-outline-info w-100 fw-bold">
+                                INICIAR ESCANEO TÉCNICO
+                            </button>
+                        </div>
+
+                        <div id="pantalla-carga" class="d-none">
+                            <p id="log-texto" class="text-success small mb-2"></p>
+                            <div class="progress bg-secondary" style="height: 10px;">
+                                <div id="barra-progreso" class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div id="pantalla-resultado" class="d-none text-center">
+                            <div class="alert alert-warning border-warning bg-dark">
+                                <h5 class="text-warning"><i class="bi bi-exclamation-triangle-fill"></i> REPORTE FINALIZADO</h5>
+                                <p id="veredicto" class="small text-white"></p>
+                            </div>
+                            <a id="btn-whatsapp" href="https://wa.me/56912345678" target="_blank" class="btn btn-success w-100 fw-bold">
+                                SOLUCIONAR PROBLEMA <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- ========================================GUÍA DE REGISTRO======================================================================= -->
+
+ <section id="seccion-guia" class="py-5 bg-gradient-dark text-white shadow-lg">
+    <div class="container text-center py-4" style="background: rgba(0,0,0,0.3); border-radius: 15px; border-left: 5px solid #0dcaf0;">
+        <h2 class="display-6 fw-bold">Guía de Hacking Ético y Seguridad Digital</h2>
+        <p class="lead">Descarga gratis <strong>Guía de Ciberseguridad y Hacking Ético</strong> y aprende las bases del pentesting de forma legal paso a paso.</p>
+        
+        <a href="{% url 'pagina_guia' %}" class="btn-boostpro mt-3 d-inline-block text-decoration-none shadow">
+            OBTENER GUÍA GRATIS <i class="bi bi-arrow-right-circle"></i>
+        </a>
+    </div>
+</section>
+
   <!-- ===================================BLOG================================================================================= -->
 
   <section id="blog" class="py-5" style="

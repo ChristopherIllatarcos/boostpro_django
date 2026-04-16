@@ -1,0 +1,65 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+<style>
+    .card-guia-pro {
+        background-color: #1a1d20 !important;
+        border: 2px solid #0dcaf0 !important;
+        border-radius: 15px !important;
+        box-shadow: 0 0 25px rgba(13, 202, 240, 0.3) !important;
+    }
+    .icono-guia-cian {
+        color: #0dcaf0 !important;
+        filter: drop-shadow(0 0 8px rgba(13, 202, 240, 0.6));
+    }
+    .btn-guia-brillante {
+        background-color: #0dcaf0 !important;
+        color: #000 !important;
+        border: none !important;
+        box-shadow: 0 0 15px rgba(13, 202, 240, 0.5) !important;
+        transition: all 0.3s ease;
+    }
+    .btn-guia-brillante:hover {
+        box-shadow: 0 0 30px rgba(13, 202, 240, 0.9) !important;
+        transform: translateY(-3px);
+    }
+    .input-oscuro {
+        background-color: #2b3035 !important;
+        border: 1px solid #0dcaf0 !important;
+        color: white !important;
+    }
+    .input-oscuro:focus {
+        border-color: #0dcaf0 !important;
+        box-shadow: 0 0 10px rgba(13, 202, 240, 0.5) !important;
+    }
+</style>
+
+<div class="container my-5 py-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6 card-guia-pro p-5 shadow">
+            
+            <div id="registro-seccion">
+                <i class="bi bi-shield-lock-fill icono-guia-cian display-1"></i>
+                <h2 class="mt-3 fw-bold text-white">Casi listo</h2>
+                <p class="text-light">Ingresa tu correo para desbloquear la descarga de la guía técnica.</p>
+                
+                <form id="lead-form-pagina" data-url="{% url 'descargar_guia' %}">
+                    {% csrf_token %}
+                    <input type="email" id="email-guia" class="form-control form-control-lg mb-3 input-white" placeholder="tu-email@correo.com" required>
+                    
+                    <button type="submit" class="btn btn-guia-brillante btn-lg w-100 fw-bold">HABILITAR DESCARGA</button>
+                </form>
+            </div>
+
+            <div id="descarga-seccion" style="display: none;">
+                <i class="bi bi-check-circle-fill text-success display-1"></i>
+                <h2 class="mt-3 fw-bold text-white">¡Acceso Concedido!</h2>
+                <p class="text-light">Ya puedes descargar tu PDF de optimización y seguridad.</p>
+                <a href="{{ guia.archivo.url }}" download class="btn btn-success btn-lg w-100 fw-bold">
+                    DESCARGAR {{ guia.nombre|upper }} <i class="bi bi-download"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

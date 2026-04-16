@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contacto, Servicio, Proyecto, Post, FAQ
+from .models import Contacto, Servicio, Proyecto, Post, FAQ, SuscriptorGuia, RecursoDigital
 
 # Register your models here.
 
@@ -50,3 +50,7 @@ class FAQAdmin(admin.ModelAdmin):
     list_display = ('pregunta', 'orden')
     list_editable = ('orden',) 
     search_fields = ('pregunta', 'respuesta')
+    
+# REGISTRO DE LOS NUEVOS MODELOS EN EL ADMIN
+admin.site.register(SuscriptorGuia)
+admin.site.register(RecursoDigital)

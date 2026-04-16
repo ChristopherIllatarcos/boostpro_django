@@ -1,0 +1,112 @@
+/* Cuando el modo claro está activo */
+[data-theme="light"] {
+    /* Un blanco puro para el fondo */
+    --fondo-tarjeta: #ffffff !important;
+    /* Un gris oscuro pero no negro total para los títulos (más elegante) */
+    --texto-principal: #333333 !important; 
+    /* Un gris intermedio para los párrafos, mucho más suave al ojo */
+    --texto-secundario: #5f6368 !important; 
+    /* El color cian del logo, pero un pelín más oscuro para que se lea en blanco */
+    --acentuado: #0088a3 !important; 
+}
+
+/* Aplicación a la sección de Metodología */
+[data-theme="light"] .card, 
+[data-theme="light"] .card-body,
+[data-theme="light"] section {
+    background-color: var(--fondo-tarjeta) !important;
+}
+
+/* Títulos con el gris principal */
+[data-theme="light"] h1, 
+[data-theme="light"] h2, 
+[data-theme="light"] h3, 
+[data-theme="light"] h4,
+[data-theme="light"] .h1, 
+[data-theme="light"] .h2,
+[data-theme="light"] .fw-bold {
+    color: var(--texto-principal) !important;
+}
+
+/* Párrafos y descripciones con el gris suave */
+[data-theme="light"] p, 
+[data-theme="light"] span,
+[data-theme="light"] .text-light,
+[data-theme="light"] .text-white-50,
+[data-theme="light"] .text-white {
+    color: var(--texto-secundario) !important;
+}
+
+
+/* Seleccionamos el botón por su ID */
+#theme-toggle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50% !important; /* Círculo perfecto */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Quitamos el padding para que el icono quede centrado */
+}
+
+#theme-toggle:hover {
+    background-color: #0dcaf0;
+    color: #000;
+    box-shadow: 0 0 12px rgba(13, 202, 240, 0.6);
+    transform: scale(1.1);
+}
+
+
+/* themes.css - EL BARRIDO GLOBAL */
+
+[data-theme="light"] body, 
+[data-theme="light"] main, 
+[data-theme="light"] section,
+[data-theme="light"] .container-fluid,
+[data-theme="light"] .wrapper {
+    background-color: #f8f9fa !important; /* Un gris muy clarito, casi blanco, para que no canse */
+    color: #333333 !important;
+}
+
+/* Si en el FAQ o en otros templates usas la clase bg-dark de Bootstrap */
+[data-theme="light"] .bg-dark {
+    background-color: #ffffff !important;
+}
+
+/* Esto asegura que el fondo de las tarjetas y contenedores de FAQ también cambien */
+[data-theme="light"] .accordion-item,
+[data-theme="light"] .accordion-header,
+[data-theme="light"] .accordion-button {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+}
+
+/* static/web/css/themes.css */
+
+/* Ajustes para el Toast en Modo Claro */
+[data-theme="light"] #securityToast {
+    border: 1px solid #dee2e6 !important;
+}
+
+[data-theme="light"] .toast-header {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+[data-theme="light"] .toast-header .text-white-50 {
+    color: #6c757d !important; /* Gris suave para el "Ahora" */
+}
+
+[data-theme="light"] .btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(0%); /* Invierte el color del botón cerrar */
+}
+
+[data-theme="light"] .bg-boostpro-dark {
+    background-color: #ffffff !important;
+    color: #5f6368 !important; /* Gris suave para el texto */
+}
+
+[data-theme="light"] .text-cyan {
+    color: #0088a3 !important; /* Un cian un poco más oscuro para que se lea en blanco */
+}

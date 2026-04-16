@@ -14,7 +14,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # 3. Variables Básicas
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-cambiame')
-DEBUG = os.getenv('DEBUG') == 'False'
+DEBUG = os.getenv('DEBUG') == 'True' #Cambiar a False en producción
 
 ALLOWED_HOSTS = ['boostpro.cl', '127.0.0.1', 'localhost']
 

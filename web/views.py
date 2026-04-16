@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.conf import settings
 from django.utils.html import strip_tags
 from .forms import ContactoForm
-from .models import Servicio, Proyecto, Post, FAQ
+from .models import Servicio, Proyecto, Post, FAQ, SuscriptorGuia, RecursoDigital
+from django.http import JsonResponse
+import re 
 
 # Create your views here.
 def home(request):
@@ -106,3 +108,33 @@ def custom_404(request, exception):
     return render(request, '404.html', status=404)
 
 handler404 = custom_404
+
+
+#==========================VISTA PARA DESCARGAR GUÍA DE BLINDAJE DIGITAL===============================#
+def descargar_guia(request):
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip()
+
+        # 1. Validar que no esté vacío
+        if not email:
+            return JsonResponse({'status': 'error', 'message': 'El correo es obligatorio'}, status=400)
+
+        # 2. Validar formato de email (opcional pero pro)
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            return JsonResponse({'status': 'error', 'message': 'Formato de correo no válido'}, status=400)
+
+        # 3. Guardar o recuperar (evita errores si ya existe)
+        suscriptor, created = SuscriptorGuia.objects.get_or_create(email=email)
+        
+        return JsonResponse({
+            'status': 'ok', 
+            'message': 'Suscripción exitosa',
+            'nuevo': created
+        })
+
+    return JsonResponse({'status': 'error', 'message': 'Método no permitido'}, status=405)
+
+#=========================VISTA PARA MOSTRAR LA PÁGINA DE REGISTRO DE LA GUÍA===============================#
+def pagina_guia(request):
+    ultima_guia = RecursoDigital.objects.last()
+    return render(request, 'web/includes/guia_registro.html', {'guia': ultima_guia})

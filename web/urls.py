@@ -14,6 +14,8 @@ urlpatterns = [
     path('servicios/consulta/', views.consulta_view, name='consulta_detalle'),
     path('servicios/intervencion/', views.intervencion_view, name='intervencion_detalle'),
     path('servicios/optimizacion/', views.optimizacion_view, name='optimizacion_detalle'),
+    path('descargar-guia/', views.descargar_guia, name='descargar_guia'),
+    path('guia-registro/', views.pagina_guia, name='pagina_guia'),
     
 
     

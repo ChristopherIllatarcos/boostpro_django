@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+#==========================NUEVO MODELO PARA CONTACTO===============================#
 
 class Contacto(models.Model):
     # Usamos db_index=True para que las búsquedas por email sean instantáneas
@@ -21,6 +22,8 @@ class Contacto(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.asunto}"
+    
+#==========================NUEVO MODELO PARA SERVICIOS DE DESARROLLO A MEDIDA===============================#
 
 class Servicio(models.Model):
     # Para gestionar tus servicios de $20.000 y $15.000 desde el Admin
@@ -33,6 +36,8 @@ class Servicio(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+ #==========================NUEVO MODELO PARA PROYECTOS DE SOFTWARE===============================#   
 
 class Proyecto(models.Model):
     titulo = models.CharField(max_length=100)
@@ -47,6 +52,8 @@ class Proyecto(models.Model):
     def __str__(self):
         return self.titulo
     
+#==========================NUEVO MODELO PARA BLOG===============================#
+    
 class Post(models.Model):
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(unique=True) # Para que la URL sea boostpro.cl/blog/mi-post
@@ -57,6 +64,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+#==========================NUEVO MODELO PARA PREGUNTAS FRECUENTES===============================#
 
 class FAQ(models.Model):
     pregunta = models.CharField(max_length=255)
@@ -70,3 +79,22 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.pregunta
+    
+    
+#==========================NUEVO MODELO PARA SUSCRIPTORES GUIA===============================#
+
+class SuscriptorGuia(models.Model):
+    email = models.EmailField(unique=True)
+    fecha_registro = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+#==========================NUEVO MODELO PARA RECURSOS DIGITALES (GUÍAS, EBOOKS, ETC)===============================#
+class RecursoDigital(models.Model):
+    nombre = models.CharField(max_length=100)
+    archivo = models.FileField(upload_to='guias/')
+    fecha_subida = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nombre
