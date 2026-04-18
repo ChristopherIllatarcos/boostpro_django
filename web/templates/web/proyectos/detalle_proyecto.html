@@ -1,0 +1,91 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'web/css/detalle.css' %}?v=2.0" />
+
+  <main class="detalle-proyecto-site min-vh-100 bg-dark-custom">
+    <section class="hero-detalle-proyecto py-5">
+      <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'home' %}" class="text-info text-decoration-none">Inicio</a>
+            </li>
+            <li class="breadcrumb-item active">Detalle del Proyecto</li>
+          </ol>
+        </nav>
+
+        <h1 class="display-1 fw-bolder text-info mb-3">{{ proyecto.nombre|default:'Servipro Connect' }}</h1>
+
+        <p class="lead fs-3 text-secondary border-start border-info border-5 ps-3">Documentación técnica y detalles del desarrollo profesional.</p>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="proyecto-card-img mb-4 shadow-sm rounded-4 overflow-hidden">
+              <img src="{{ proyecto.imagen.url }}" class="img-fluid w-100" alt="{{ proyecto.nombre }}" />
+            </div>
+
+            <div class="proyecto-descripcion-estatica">
+              <h2 class="h3 mb-4 fw-bold border-start border-info border-4 ps-3">Descripción del Proyecto</h2>
+              <div class="contenido-texto fs-5 text-secondary">
+                <p>El proyecto se centró en centralizar la gestión de requerimientos, permitiendo una comunicación fluida y un seguimiento en tiempo real de cada solicitud de servicio. Se implementó una arquitectura robusta para garantizar que la asignación de tareas sea rápida, segura y transparente para ambas partes.</p>
+
+                <h3 class="h5 fw-bold mt-4 text-dark">Desafíos Técnicos</h3>
+                <p>Uno de los mayores retos fue la integración de la base de datos con el frontend dinámico, garantizando tiempos de respuesta menores a 200ms.</p>
+
+                <ul class="list-group list-group-flush mt-3">
+                  <li class="list-group-item bg-transparent ps-0">
+                    <i class="fas fa-check text-info me-2"></i> Optimización de consultas SQL.
+                  </li>
+                  <li class="list-group-item bg-transparent ps-0">
+                    <i class="fas fa-check text-info me-2"></i> Implementación de seguridad por capas.
+                  </li>
+                  <li class="list-group-item bg-transparent ps-0">
+                    <i class="fas fa-check text-info me-2"></i> Interfaz responsive compatible con dispositivos móviles.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+         <div class="col-lg-4">
+    <div class="card card-tecnica-glow border-0 shadow-lg rounded-4 p-4 sticky-top" style="top: 100px;">
+        <h4 class="fw-bold mb-4 text-white">Ficha Técnica</h4>
+
+        <div class="mb-3">
+            <label class="small text-uppercase fw-bold text-info d-block">Cliente / Empresa</label>
+            <span class="fs-5 text-light">Servipro Connect</span>
+        </div>
+
+        <div class="mb-3">
+            <label class="small text-uppercase fw-bold text-info d-block">Tecnologías Utilizadas</label>
+            <div class="mt-2">
+                <span class="badge badge-outline-tech px-3 py-2">Python</span>
+                <span class="badge badge-glow-tech px-3 py-2">Django</span>
+                <span class="badge badge-outline-tech px-3 py-2">SQL</span>
+            </div>
+        </div>
+
+        <hr class="border-secondary my-4" />
+
+        <div class="d-grid gap-2">
+            <a href="{% url 'galeria_proyecto' proyecto.id %}" class="btn btn-info btn-lg text-white fw-bold rounded-pill btn-glow-blue w-100 mb-2">
+                <i class="fas fa-images me-2"></i> Ver Galería de Fotos
+            </a>
+            <a href="{% url 'home' %}" class="btn btn-outline-light btn-lg rounded-pill opacity-75">
+                Volver Atrás
+            </a>
+        </div>
+    </div>
+</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{% static 'web/js/detalle.js' %}"></script>
+{% endblock %}

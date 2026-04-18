@@ -1,0 +1,32 @@
+/* Forzar el carrusel a ser gigante */
+#carouselProyecto {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.img-full-view {
+    width: 100% !important; /* Estira la imagen al ancho del navegador */
+    height: 75vh !important; /* Ocupa el 75% de la altura de la pantalla */
+    object-fit: contain;      /* Muestra la captura completa sin cortes */
+    background-color: #121416; /* Fondo oscuro para el espacio sobrante */
+}
+
+/* Agrandar las flechas de navegación */
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    width: 50px;
+    height: 50px;
+    opacity: 0.9;
+}
+
+.border-y {
+    border-top: 1px solid #343a40 !important;
+    border-bottom: 1px solid #343a40 !important;
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .img-full-view {
+        height: 50vh !important;
+    }
+}

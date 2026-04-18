@@ -155,14 +155,16 @@
       </div>
     </div>
   </section>
-
-  <!-- ==========================================SOFTWARE Y DESARROLLO================================================ -->
+  <!-- ==========================================SERVICIOS================================================ -->
 
   <section id="servicios" class="py-5" style="background: #1a1a1a;">
     <div class="container">
       {% include 'web/includes/_servicios.html' %}
     </div>
   </section>
+
+    <!-- ==========================================SOFTWARE Y DESARROLLO================================================ -->
+
 
   <section id="proyectos" class="py-5" style="background: #121212;">
     <div class="container">
@@ -257,16 +259,16 @@
   {% include 'web/includes/_stack.html' %}
 
   <section id="contacto" class="py-5 bg-light">
-    <div class="container">
+    <div class="container" >
       <div class="text-center mb-5">
         <h2 class="fw-bold text-dark">Contacto <span class="text-info">&</span> Presupuesto</h2>
-        <p class="text-muted">Cuéntanos sobre tu requerimiento tecnológico y te responderemos a la brevedad</p>
+        <p class="text-text text-dark">Cuéntanos sobre tu requerimiento tecnológico y te responderemos a la brevedad</p>
       </div>
 
       <div class="row align-items-center">
         <div class="col-lg-4 mb-4 mb-lg-0">
           <h2 class="fw-bold text-dark">¿Listo para comenzar?</h2>
-          <p class="text-muted fs-5">Soluciones tecnológicas a medida: Especialistas en optimización y despliegue de sistemas multiplataforma.</p>
+          <p class="text-text fs-5 text-dark">Soluciones tecnológicas a medida: Especialistas en optimización y despliegue de sistemas multiplataforma.</p>
           <div class="mt-4">
             <p class="mb-1 fw-bold text-dark">
               <i class="fas fa-check-circle text-info me-2"></i> Soporte Especializado Windows & Linux
@@ -280,28 +282,28 @@
           </div>
         </div>
         <div class="col-lg-8">
-          <div class="card shadow border-0 rounded-4 p-4 bg-white">
+          <div class="card shadow border-0 rounded-4 p-4 bg-black">
             <form method="POST" action="{% url 'home' %}" id="formContacto">
               {% csrf_token %}
-              <div class="mb-3 text-dark">
+              <div class="mb-3 text-white">
                 <label class="form-label fw-bold">Nombre Completo / Empresa</label>
                 {{ form.nombre }}
               </div>
-              <div class="row text-dark">
+              <div class="row text-white">
                 <div class="col-md-6 mb-3">
                   <label class="form-label fw-bold">Email</label>
                   {{ form.email }}
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3 text-white">
                   <label class="form-label fw-bold">Teléfono</label>
                   {{ form.telefono }}
                 </div>
               </div>
-              <div class="mb-3 text-dark">
+              <div class="mb-3 text-white">
                 <label class="form-label fw-bold">Asunto</label>
                 {{ form.asunto }}
               </div>
-              <div class="mb-4 text-dark">
+              <div class="mb-4 text-white">
                 <label class="form-label fw-bold">Mensaje / Detalles del Requerimiento</label>
                 {{ form.mensaje }}
               </div>

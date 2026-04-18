@@ -1,0 +1,121 @@
+/* 1. Forzamos el ancho del carrusel casi al borde de la pantalla */
+.container-carrusel-grande {
+    width: 98% !important; 
+    max-width: 1800px; /* Límite para que no se vea deforme en pantallas gigantes */
+    margin: 0 auto;
+}
+
+/* 2. Forzamos a la imagen a ocupar todo el ancho del carrusel */
+.img-full-screen {
+    width: 100% !important; 
+    height: auto !important;
+    min-height: 600px; /* Altura mínima para que tenga presencia */
+    max-height: 85vh;  /* Altura máxima para que quepa en la pantalla sin scroll */
+    object-fit: contain; /* Muestra la captura completa de Servipro */
+    background-color: #0b0c0d; /* Fondo oscuro por si la captura es vertical */
+}
+
+/* 3. Ajuste de las flechas para que sean grandes y visibles */
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    width: 50px !important;
+    height: 50px !important;
+    background-color: rgba(0, 0, 0, 0.7) !important; /* Fondo negro circular */
+    border-radius: 50%;
+}
+
+/* 4. Estilo de los bordes del carrusel */
+.carousel-inner {
+    border-top: 1px solid #343a40;
+    border-bottom: 1px solid #343a40;
+    background-color: #000;
+}
+
+
+/* Tarjeta con Borde Brillante */
+.card-tecnica-glow {
+    background-color: #1a1d20 !important; /* Un gris un poco más claro que el fondo total */
+    border: 1px solid rgba(13, 202, 240, 0.3) !important; /* Borde celeste suave */
+    box-shadow: 0 0 20px rgba(13, 202, 240, 0.15) !important; /* Brillo exterior */
+    transition: all 0.4s ease;
+}
+
+.card-tecnica-glow:hover {
+    border: 1px solid rgba(13, 202, 240, 0.8) !important; /* El borde se ilumina al pasar el mouse */
+    box-shadow: 0 0 30px rgba(13, 202, 240, 0.3) !important;
+    transform: translateY(-5px);
+}
+
+/* Estilo para las etiquetas de tecnología */
+.badge-outline-tech {
+    background: transparent;
+    border: 1px solid #495057;
+    color: #adb5bd;
+    border-radius: 50px;
+}
+
+.badge-glow-tech {
+    background: rgba(13, 202, 240, 0.1);
+    border: 1px solid #0dcaf0;
+    color: #0dcaf0;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.2);
+}
+
+/* Botón con pulso de luz */
+.btn-glow-blue {
+    background-color: #0dcaf0 !important;
+    border: none;
+    box-shadow: 0 4px 15px rgba(13, 202, 240, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-glow-blue:hover {
+    box-shadow: 0 0 25px rgba(13, 202, 240, 0.6);
+    transform: scale(1.02);
+}
+
+/* Color cian para los labels */
+.text-info {
+    color: #0dcaf0 !important;
+}
+
+/* Estilo para el título del proyecto con efecto de resplandor */
+
+.hero-detalle-proyecto h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: #0dcaf0 !important;
+    
+    /* Efecto de sombra y resplandor */
+    /* 1. Sombra sólida para profundidad | 2. Resplandor difuso celeste */
+    text-shadow: 
+        3px 3px 0px rgba(0, 0, 0, 0.8), 
+        0 0 15px rgba(13, 202, 240, 0.6), 
+        0 0 30px rgba(13, 202, 240, 0.2);
+    
+    transition: all 0.3s ease;
+}
+
+/* Efecto opcional: Que brille más al pasar el mouse */
+.hero-detalle-proyecto h1:hover {
+    text-shadow: 
+        3px 3px 0px rgba(0, 0, 0, 0.9), 
+        0 0 25px rgba(13, 202, 240, 0.8), 
+        0 0 45px rgba(13, 202, 240, 0.4);
+    transform: scale(1.01);
+}
+
+.hero-detalle-proyecto p.lead {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+
+/* 5. Ajuste para celulares */
+@media (max-width: 768px) {
+    .img-full-screen {
+        min-height: 350px;
+        max-height: 60vh;
+    }
+}

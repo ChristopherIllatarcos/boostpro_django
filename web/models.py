@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 #==========================NUEVO MODELO PARA CONTACTO===============================#
@@ -52,6 +53,16 @@ class Proyecto(models.Model):
     def __str__(self):
         return self.titulo
     
+# ================= NUEVO MODELO PARA GALERÍA =================
+class ImagenProyecto(models.Model):
+    # Relacionamos CADA imagen con UN Proyecto
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, related_name='imagenes')
+    imagen = models.ImageField(upload_to='proyectos/galeria/')
+    descripcion_alt = models.CharField(max_length=100, blank=True, help_text="Texto alternativo opcional")
+
+    def __str__(self):
+        return f"Imagen de {self.proyecto.titulo}"
+    
 #==========================NUEVO MODELO PARA BLOG===============================#
     
 class Post(models.Model):
@@ -98,3 +109,4 @@ class RecursoDigital(models.Model):
 
     def __str__(self):
         return self.nombre
+    

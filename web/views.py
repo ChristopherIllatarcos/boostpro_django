@@ -65,6 +65,8 @@ def home(request):
         'posts': posts
         
     })  
+    
+#==========================VISTAS DE PÁGINAS ESTÁTICAS=================================
 
 def suitecontrol(request):
     return render(request, 'web/suitecontrol.html')
@@ -138,3 +140,21 @@ def descargar_guia(request):
 def pagina_guia(request):
     ultima_guia = RecursoDigital.objects.last()
     return render(request, 'web/includes/guia_registro.html', {'guia': ultima_guia})
+
+
+#==========================VISTA DETALLE PROYECTO=================================
+def detalle_proyecto(request, pk):
+    # Buscamos el proyecto o soltamos un 404 si no existe
+    proyecto = get_object_or_404(Proyecto, pk=pk)
+    return render(request, 'web/proyectos/detalle_proyecto.html', {'proyecto': proyecto})
+
+
+#==========================VISTA GALERÍA DE PROYECTO=================================
+def galeria_proyecto(request, pk):
+    proyecto = get_object_or_404(Proyecto, pk=pk)
+    # Obtenemos todas las imágenes asociadas a este proyecto desde el admin
+    imagenes = proyecto.imagenes.all() 
+    return render(request, 'web/proyectos/galeria_proyecto.html', {
+        'proyecto': proyecto,
+        'imagenes': imagenes
+    })

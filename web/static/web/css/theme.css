@@ -3,9 +3,9 @@
     /* Un blanco puro para el fondo */
     --fondo-tarjeta: #ffffff !important;
     /* Un gris oscuro pero no negro total para los títulos (más elegante) */
-    --texto-principal: #333333 !important; 
+    --texto-principal: #000000 !important; 
     /* Un gris intermedio para los párrafos, mucho más suave al ojo */
-    --texto-secundario: #5f6368 !important; 
+    --texto-secundario: #000000 !important; 
     /* El color cian del logo, pero un pelín más oscuro para que se lea en blanco */
     --acentuado: #0088a3 !important; 
 }
@@ -110,3 +110,112 @@
 [data-theme="light"] .text-cyan {
     color: #0088a3 !important; /* Un cian un poco más oscuro para que se lea en blanco */
 }
+
+/* Agregamos el "-bs-" para que coincida con lo que pone el JS */
+[data-bs-theme="light"] {
+    --fondo-tarjeta: #ffffff !important;
+    --texto-principal: #333333 !important; 
+    --texto-secundario: #5f6368 !important; 
+    --acentuado: #0088a3 !important; 
+}
+
+/* Esto va a obligar a todas tus secciones oscuras a volverse blancas/grises claro */
+[data-bs-theme="light"] section, 
+[data-bs-theme="light"] .bg-dark, 
+[data-bs-theme="light"] .navbar-custom-boost,
+[data-bs-theme="light"] .footer,
+[data-bs-theme="light"] header {
+    background-color: #f8f9fa !important; /* El gris clarito que te gusta */
+    color: #333333 !important;
+}
+
+/* La Terminal de "Auditoría en Tiempo Real" */
+[data-bs-theme="light"] .terminal-window, 
+[data-bs-theme="light"] .fake-terminal {
+    background-color: #ffffff !important;
+    border: 1px solid #dee2e6 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+}
+
+[data-bs-theme="light"] .terminal-body {
+    color: #212529 !important;
+}   
+
+/* Para que los iconos de Linux, Python, etc., no se pierdan en el blanco */
+[data-bs-theme="light"] #stack, 
+[data-bs-theme="light"] .stack-section {
+    background-color: #ffffff !important;
+}
+
+/* Ajuste para las tarjetas de SuiteControl y Servipro */
+[data-bs-theme="light"] .card {
+    background-color: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+}
+
+[data-bs-theme="light"] .card-title, 
+[data-bs-theme="light"] .card-text {
+    color: #333333 !important;
+}
+
+/* El Footer que marcaste con cruz roja */
+[data-bs-theme="light"] footer, 
+[data-bs-theme="light"] .main-footer {
+    background-color: #e9ecef !important;
+    color: #212529 !important;
+    border-top: 1px solid #dee2e6 !important;
+}
+
+
+
+
+[data-bs-theme="light"] .form-control::placeholder {
+    color: #adb5bd !important;
+}
+
+/* Esto busca cualquier texto que pueda haber quedado blanco y lo vuelve oscuro */
+[data-bs-theme="light"] h1, 
+[data-bs-theme="light"] h2, 
+[data-bs-theme="light"] h3, 
+[data-bs-theme="light"] h4,
+[data-bs-theme="light"] p,
+[data-bs-theme="light"] span:not(.badge), 
+[data-bs-theme="light"] li,
+[data-bs-theme="light"] label {
+    color: #212529 !important; /* Un negro suave tipo Bootstrap */
+}
+
+
+
+/* Forzamos que los links del menú se vean oscuros */
+[data-bs-theme="light"] .navbar-custom-boost .nav-link {
+    color: #212529 !important; /* Negro elegante */
+    font-weight: 500;
+}
+
+/* El link que está activo (donde el usuario está parado) */
+[data-bs-theme="light"] .navbar-custom-boost .nav-link.active {
+    color: #008fa1 !important; /* Tu cian pero más oscurito */
+}
+
+/* Cuando el usuario pasa el mouse por encima */
+[data-bs-theme="light"] .navbar-custom-boost .nav-link:hover {
+    color: #0dcaf0 !important; /* Cian brillante en el hover */
+}
+
+/* Si tienes un dropdown (menú desplegable), esto arregla el texto */
+[data-bs-theme="light"] .dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid #dee2e6;
+}
+
+[data-bs-theme="light"] .dropdown-item {
+    color: #212529 !important;
+}
+
+/* El botón de la "hamburguesa" en móviles */
+[data-bs-theme="light"] .navbar-toggler {
+    filter: invert(1); /* Esto vuelve oscura la rejilla del menú móvil */
+}
+
+

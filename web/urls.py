@@ -2,10 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    
+    #================================RUTAS PRINCIPALES====================================#
     path('', views.home, name='home'),
-    path('suitecontrol/', views.suitecontrol, name='suitecontrol'), 
     path('contacto/', views.contacto, name='contacto'),
-    path('proyectos/avacif/', views.avacif_view, name='avacif_demo'), 
     path('blog/<slug:slug>/', views.detalle_post, name='detalle_post'),
     path('preguntas-frecuentes/', views.faq_list, name='faq_list'),
     
@@ -17,7 +17,11 @@ urlpatterns = [
     path('descargar-guia/', views.descargar_guia, name='descargar_guia'),
     path('guia-registro/', views.pagina_guia, name='pagina_guia'),
     
-
+    #===============================RUTAS PROYECTOS====================================#
+    path('suitecontrol/', views.suitecontrol, name='suitecontrol'), 
+    path('proyectos/avacif/', views.avacif_view, name='avacif_demo'), 
+    path('proyecto/<int:pk>/', views.detalle_proyecto, name='detalle_proyecto'),
+    path('proyecto/<int:pk>/galeria/', views.galeria_proyecto, name='galeria_proyecto'),
     
     
     

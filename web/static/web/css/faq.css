@@ -35,3 +35,11 @@
 .faq-page .accordion-button::after {
     filter: invert(1) brightness(2);
 }
+
+/* Agregamos el "-bs-" para que coincida con lo que pone el JS */
+[data-bs-theme="light"] {
+    --fondo-tarjeta: #ffffff !important;
+    --texto-principal: #333333 !important; 
+    --texto-secundario: #5f6368 !important; 
+    --acentuado: #0088a3 !important; 
+}

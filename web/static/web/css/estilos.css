@@ -279,11 +279,27 @@ body {
 
 /* --- CONFIGURACIÓN NAVBAR --- */
 .navbar-custom-boost {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgba(33, 37, 41, 0.9) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--bs-body-bg) !important;
+    border-bottom: 1px solid var(--bs-border-color);
     transition: all 0.3s ease;
+}
+
+/* Agregamos el "-bs-" para que coincida con lo que pone el JS */
+[data-bs-theme="light"] {
+    --fondo-tarjeta: #ffffff !important;
+    --texto-principal: #333333 !important; 
+    --texto-secundario: #5f6368 !important; 
+    --acentuado: #0088a3 !important; 
+}
+
+[data-bs-theme="dark"] .navbar-custom-boost .nav-link {
+    color: #e0e0e0 !important; /* Blanco/Gris para modo oscuro */
+}
+
+/* Tu toque cian para el link activo o hover */
+.navbar-custom-boost .nav-link:hover, 
+.navbar-custom-boost .nav-link.active {
+    color: #0dcaf0 !important;
 }
 
 /* Efecto hover en los links del menú */

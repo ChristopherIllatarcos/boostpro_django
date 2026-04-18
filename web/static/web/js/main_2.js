@@ -38,24 +38,29 @@ if (leadForm) {
 //========== Código para mostrar el Toast de seguridad después de 5 segundos ==========
 
 document.addEventListener('DOMContentLoaded', function () {
-    // 1. Buscamos el elemento HTML del Toast por su ID
     const securityToastEl = document.getElementById('securityToast');
 
-    // 2. Si el elemento existe en la página actual...
     if (securityToastEl) {
-        // 3. Inicializamos el componente Toast de Bootstrap
         const securityToast = new bootstrap.Toast(securityToastEl);
+        
+        // --- LÓGICA DE LOS 10 MINUTOS ---
+        const now = Date.now();
+        const lastShown = localStorage.getItem('lastSecurityToastTime');
+        const tenMinutes = 10 * 60 * 1000; // 600,000 milisegundos
 
-        // 4. Establecemos un retraso de 5000ms (5 segundos) antes de mostrarlo
-        setTimeout(function () {
-            securityToast.show(); // ¡Muestra el Toast con animación!
-        }, 5000);
+        // Si es la primera vez o si ya pasaron más de 10 minutos desde la última vez
+        if (!lastShown || (now - lastShown) > tenMinutes) {
+            setTimeout(function () {
+                securityToast.show();
+                // Guardamos el momento exacto en que se mostró
+                localStorage.setItem('lastSecurityToastTime', now);
+            }, 5000); // Mantenemos los 5 segundos de cortesía antes de salir
+        }
     }
 });
 
 
-
-
+//========== Código para el análisis de síntomas y generación de resultados ==========//
 function iniciarAnalisis() {
     const sintoma = document.getElementById('sintoma').value;
     document.getElementById('pantalla-inicio').classList.add('d-none');
@@ -88,6 +93,7 @@ function iniciarAnalisis() {
     }, 800); // Velocidad de los mensajes
 }
 
+//====Función para mostrar el resultado final basado en el síntoma seleccionado===//
 function mostrarResultado(sintoma) {
     document.getElementById('pantalla-carga').classList.add('d-none');
     document.getElementById('pantalla-resultado').classList.remove('d-none');
@@ -109,3 +115,4 @@ function mostrarResultado(sintoma) {
     document.getElementById('veredicto').innerText = mensaje;
     document.getElementById('btn-whatsapp').href = `https://wa.me/56975122538?text=${encodeURIComponent(wpMsg)}`;
 }
+

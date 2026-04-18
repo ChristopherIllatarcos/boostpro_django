@@ -1,0 +1,41 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'web/css/galeria.css' %}?v=1.0" />
+
+<main class="bg-dark text-white min-vh-100">
+    <div class="container-fluid px-0">
+        <div class="pt-5 px-4 mb-4">
+            <h2 class="text-info fw-bold display-5">Galería: {{ proyecto.nombre }}</h2>
+        </div>
+        
+        <div id="carouselProyecto" class="carousel slide shadow-lg w-100" data-bs-ride="carousel">
+            <div class="carousel-inner border-y border-secondary">
+                {% for img in imagenes %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ img.imagen.url }}" class="d-block w-100 img-full-view" alt="Captura">
+                </div>
+                {% empty %}
+                <div class="carousel-item active text-center py-5">
+                    <p class="lead">No hay capturas disponibles.</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProyecto" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark p-4 rounded-circle"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProyecto" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark p-4 rounded-circle"></span>
+            </button>
+        </div>
+
+        <div class="text-center py-5">
+            <a href="{% url 'detalle_proyecto' proyecto.id %}" class="btn btn-outline-info btn-lg rounded-pill px-5">
+                <i class="fas fa-arrow-left me-2"></i> Volver al Detalle
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock %}
