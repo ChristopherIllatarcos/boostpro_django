@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.utils.html import strip_tags
 from .forms import ContactoForm
-from .models import Servicio, Proyecto, Post, FAQ, SuscriptorGuia, RecursoDigital
+from .models import Servicio, Proyecto, Post, FAQ, SuscriptorGuia, RecursoDigital, ImagenProyecto
 from django.http import JsonResponse
 import re 
 
@@ -144,17 +144,41 @@ def pagina_guia(request):
 
 #==========================VISTA DETALLE PROYECTO=================================
 def detalle_proyecto(request, pk):
-    # Buscamos el proyecto o soltamos un 404 si no existe
     proyecto = get_object_or_404(Proyecto, pk=pk)
-    return render(request, 'web/proyectos/detalle_proyecto.html', {'proyecto': proyecto})
+    # Traemos las imágenes para TODOS, así Servipro también puede tener su galería
+    imagenes = proyecto.imagenes.all() 
+
+    # DECISIÓN DE TEMPLATE:
+    if pk == 4:
+        # Si es la banda, cargamos el diseño Grindcore
+        template = 'web/proyectos/galeria_metal.html'
+    else:
+        # Para Servipro y cualquier otro futuro, el diseño profesional
+        template = 'web/proyectos/detalle_proyecto.html'
+    
+    return render(request, template, {
+        'proyecto': proyecto,
+        'imagenes': imagenes
+    })
 
 
-#==========================VISTA GALERÍA DE PROYECTO=================================
+#========================== VISTA GALERÍA DE PROYECTO (DINÁMICA) =================================
 def galeria_proyecto(request, pk):
     proyecto = get_object_or_404(Proyecto, pk=pk)
-    # Obtenemos todas las imágenes asociadas a este proyecto desde el admin
+    # Obtenemos las imágenes (puedes usar cualquiera de las dos formas, pero esta es limpia)
     imagenes = proyecto.imagenes.all() 
+    
+    # Lógica de decisión de diseño
+    if pk == 4:
+        # Si es Noise Core (ID 4), soltamos el caos Grindcore
+        return render(request, 'web/proyectos/galeria_metal.html', {
+            'proyecto': proyecto,
+            'imagenes': imagenes
+        })
+    
+    # Para cualquier otro proyecto (Servipro, etc.), diseño profesional
     return render(request, 'web/proyectos/galeria_proyecto.html', {
         'proyecto': proyecto,
         'imagenes': imagenes
     })
+    

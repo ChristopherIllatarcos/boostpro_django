@@ -18,6 +18,8 @@ DEBUG = os.getenv('DEBUG') == 'False' #Cambiar a False en producción
 
 ALLOWED_HOSTS = ['boostpro.cl', '127.0.0.1', 'localhost']
 
+
+
 # 4. Diagnóstico (solo en consola si DEBUG=True)
 if DEBUG:
     print(f"--- DIAGNÓSTICO BOOSTPRO ---")

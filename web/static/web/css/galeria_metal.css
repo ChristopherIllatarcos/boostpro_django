@@ -1,0 +1,196 @@
+
+/* Estética Noise Core / Grindcore */
+.bg-grindcore {
+    background-image: url('../img/fondo.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-color: #0d0d0d; /* Negro casi absoluto */
+    min-height: 100vh;
+    padding-bottom: 50px;
+    /* Empuja el contenido hacia abajo para que no lo tape el menú de BoostPro */
+    padding-top: 50px; 
+    
+    /* Asegura que el fondo cubra todo incluso con el padding */
+    background-origin: border-box; 
+}
+
+.grind-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+.grind-item {
+    border: 4px solid #1a1a1a;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 12px;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Las rotaciones las manejaremos con clases o inline mínimo para el caos */
+}
+
+.grind-item:hover {
+    transform: rotate(0deg) scale(1.08) !important;
+    border-color: #bc0000;
+    box-shadow: 0 0 30px rgba(188, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.grind-img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%) contrast(130%) brightness(0.8);
+    border: 1px solid #333;
+}
+
+.grind-img:hover {
+    filter: none;
+}
+
+/* El título con tipografía rústica */
+.metal-title {
+    font-family: 'Creepster', system-ui; /* La fuente de terror */
+    font-size: 6rem; /* Bien grande */
+    color: #bc0000; /* Cyan puro */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    
+    /* Sombra de neón + sombra negra para que resalte sobre las calaveras */
+    text-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.7),
+        0 0 20px rgba(0, 255, 255, 0.4),
+        4px 4px 0px #000; 
+
+    /* La animación que hablamos antes */
+    animation: neon-flicker 2s infinite alternate;
+}
+
+.metal-description {
+    font-family: 'Metal Mania', cursive;
+    /* Aumentamos el tamaño significativamente */
+    font-size: 2.2rem; 
+    
+    /* Rojo intenso para que resalte sobre el gris de las calaveras */
+    color: #ff0000; 
+    
+    line-height: 1.1;
+    max-width: 800px; /* Le damos más ancho para que no se amontone */
+    text-transform: uppercase;
+    
+    /* El borde rústico de la izquierda más grueso */
+    border-left: 6px solid #bc0000; 
+    padding-left: 20px;
+    margin-top: 20px;
+
+    /* Sombra negra pesada para que la letra "flote" sobre el fondo */
+    text-shadow: 
+        3px 3px 5px #000,
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+/* La línea de separación rústica */
+.metal-hr-rústica {
+    border: none;
+    height: 12px;
+    background-image: url('{% static "web/img/linea-rústica-metal.png" %}'); /* Necesitamos una textura de línea rústica */
+    background-size: cover;
+    margin: 20px 0;
+}
+
+/* Botones y Tags de Metal */
+.btn-ruido {
+    background-color: #bc0000;
+    color: rgb(245, 243, 243) !important;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+}
+
+.btn-ruido:hover {
+    background-color: #bc0000;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+.metal-tag {
+    background-color: #1a1a1a;
+    color: #ccc;
+    border-radius: 15px;
+    padding: 3px 12px;
+    font-size: 0.9rem;
+}
+
+.btn-metal {
+    background-color: #800000;
+    color: white;
+    border: 2px solid #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-metal:hover {
+    background-color: #bc0000;
+    color: black;
+}
+
+
+/* Contenedor del Modal (Fondo negro) */
+.metal-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 9999;
+    padding-top: 100px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
+}
+
+/* La Imagen Expandida */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border: 3px solid #00ffff; /* Marco de neón */
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+/* Botón de cerrar (La X) */
+.close-modal {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    color: #fff;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.close-modal:hover {
+    color: #bc0000; /* Rojo sangre al cerrar */
+}
+
+
+
+
+/* Animación de parpadeo (Flicker) */
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 10px rgba(0,255,255,0.7), 0 0 20px rgba(0,255,255,0.4), 4px 4px 0px #000;
+        opacity: 1;
+    }
+    20%, 24%, 55% {        
+        text-shadow: none;
+        opacity: 0.8;
+        color: #008b8b; /* Cyan apagado */
+    }
+}
